@@ -15,16 +15,16 @@ import java.util.ArrayList;
 
 
 public class Opotion {
-		private String optfile;		//ÅäÖÃÎÄ¼şµÄÎ»ÖÃ
-		public int kuan,gao,x,y;	//ÓÎÏ·µÄ½çÃæµÄ´óĞ¡,Î»ÖÃ
-		public int guanlength;		//ÓÎÏ·ÓĞ¶àÉÙ¹Ø
-		public static int guannow;			//µ±Ç°ÊÇµÚ¼¸¹Ø		
-		private static ArrayList guan;//¹Ø¿¨Êı×é
+		private String optfile;		//é…ç½®æ–‡ä»¶çš„ä½ç½®
+		public int kuan,gao,x,y;	//æ¸¸æˆçš„ç•Œé¢çš„å¤§å°,ä½ç½®
+		public int guanlength;		//æ¸¸æˆæœ‰å¤šå°‘å…³
+		public static int guannow;			//å½“å‰æ˜¯ç¬¬å‡ å…³		
+		private static ArrayList guan;//å…³å¡æ•°ç»„
 		
-		public Opotion(){	//¹¹Ôìº¯Êı
+		public Opotion(){	//æ„é€ å‡½æ•°
 			guannow = 1;
 			guan = new ArrayList();
-			optfile = "option\\option.xml";
+			optfile = "option/option.xml";
 			readopotion();
 		}
 		public static String getmapfile(){
@@ -33,18 +33,18 @@ public class Opotion {
 		public static String getguanname(){
 			return ((Guan)guan.get(guannow)).name;
 		}
-		protected void finalize()throws Throwable{	//Îö¹¹º¯Êı
+		protected void finalize()throws Throwable{	//ææ„å‡½æ•°
 			super.finalize();			
 		}
-		private void readopotion(){	//¶ÁÈ¡ÅäÖÃĞÅÏ¢				
+		private void readopotion(){	//è¯»å–é…ç½®ä¿¡æ¯				
 			File fl = new File(this.optfile);
-			if(fl.exists()){	//ÅĞ¶ÏÅäÖÃÎÄ¼şÊÇ·ñ´æÔÚ
+			if(fl.exists()){	//åˆ¤æ–­é…ç½®æ–‡ä»¶æ˜¯å¦å­˜åœ¨
 				DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
 				try {				
 					DocumentBuilder db = dbf.newDocumentBuilder();
 					Document doc = db.parse(this.optfile);
 					
-					Element dft	= (Element)doc.getElementsByTagName("default").item(0);	//µÃµ½Ò»Ğ©Ä¬ÈÏµÄ²»¿É¶¯Ì¬¸ü¸ÄµÄÊôĞÔ£¬x,y,¿í£¬¸ß
+					Element dft	= (Element)doc.getElementsByTagName("default").item(0);	//å¾—åˆ°ä¸€äº›é»˜è®¤çš„ä¸å¯åŠ¨æ€æ›´æ”¹çš„å±æ€§ï¼Œx,y,å®½ï¼Œé«˜
 					Element wd	= (Element)dft.getElementsByTagName("width").item(0);
 					this.kuan	= Integer.parseInt(wd.getFirstChild().getNodeValue());
 					Element ht	= (Element)dft.getElementsByTagName("height").item(0);
@@ -79,7 +79,7 @@ public class Opotion {
 			}
 			else
 			{
-				System.out.println("ÎÄ¼ş²»´æÔÚ£¬½«´´½¨ÎÄ¼ş¡£");
+				System.out.println("æ–‡ä»¶ä¸å­˜åœ¨ï¼Œå°†åˆ›å»ºæ–‡ä»¶ã€‚");
 			}			
 		}
 		
@@ -89,7 +89,7 @@ public class Opotion {
 				DocumentBuilder db = dbf.newDocumentBuilder();
 				Document doc = db.parse(this.optfile);
 				
-				Element dft = (Element)doc.getElementsByTagName("default").item(0);	//µÃµ½Ò»Ğ©Ä¬ÈÏµÄ²»¿É¶¯Ì¬¸ü¸ÄµÄÊôĞÔ£¬¿í£¬¸ß
+				Element dft = (Element)doc.getElementsByTagName("default").item(0);	//å¾—åˆ°ä¸€äº›é»˜è®¤çš„ä¸å¯åŠ¨æ€æ›´æ”¹çš„å±æ€§ï¼Œå®½ï¼Œé«˜
 				Element el;
 				el = (Element)dft.getElementsByTagName("x").item(0);
 				el.getFirstChild().setNodeValue(String.valueOf(this.x));
@@ -105,7 +105,7 @@ public class Opotion {
 			catch (Exception e) {
 			e.printStackTrace();
 			}	
-			System.out.println("ÅäÖÃÒÑ¾­±£´æ¡£");
+			System.out.println("é…ç½®å·²ç»ä¿å­˜ã€‚");
 		}
 }
 
@@ -115,8 +115,8 @@ class Guan{
 }
 
 /*
- * ÒªÓÃÕâ¸öÀàÊµÏÖÒÔÏÂ¹¦ÄÜ£º
- * 1.	´ÓXML¶ÁÈ¡ÓÎÏ·Êı¾İ£º´°¿ÚÊı¾İ£¬¸ßÊÖÅÅĞĞ°ñ£¬ÉÏ´ÎÊÇ·ñ±£´æ½ø¶È£¬½ø¶ÈÎÄ¼şµÄË÷Òı
- * 2.	±£´æÊı¾İ
- * 2.	³ÌĞòÔËĞĞÊ±ËæÊ±Ìá¹©²éÑ¯
+ * è¦ç”¨è¿™ä¸ªç±»å®ç°ä»¥ä¸‹åŠŸèƒ½ï¼š
+ * 1.	ä»XMLè¯»å–æ¸¸æˆæ•°æ®ï¼šçª—å£æ•°æ®ï¼Œé«˜æ‰‹æ’è¡Œæ¦œï¼Œä¸Šæ¬¡æ˜¯å¦ä¿å­˜è¿›åº¦ï¼Œè¿›åº¦æ–‡ä»¶çš„ç´¢å¼•
+ * 2.	ä¿å­˜æ•°æ®
+ * 2.	ç¨‹åºè¿è¡Œæ—¶éšæ—¶æä¾›æŸ¥è¯¢
  */

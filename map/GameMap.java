@@ -24,11 +24,11 @@ import java.util.ArrayList;
  */
 public class GameMap {
 	
-	public static ArrayList dipingxians;	//µØÆ½ÏßµÄ¼¯ºÏ
+	public static ArrayList dipingxians;	//åœ°å¹³çº¿çš„é›†åˆ
 	
 	public GameMap(String mapfile){
 		dipingxians = new ArrayList();
-		System.out.println("Éú³ÉÁËMap£¡");
+		System.out.println("ç”Ÿæˆäº†Mapï¼");
 		readxml(mapfile);
 	}
 	public ArrayList getdipingxian(){
@@ -36,18 +36,18 @@ public class GameMap {
 	}
 	private void readxml(String mapfile){
 		DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
-		System.out.println("¿ªÊ¼¶ÁµØÍ¼ÎÄ¼ş");
+		System.out.println("å¼€å§‹è¯»åœ°å›¾æ–‡ä»¶");
 		try {				
 			DocumentBuilder db = dbf.newDocumentBuilder();
 			Document doc = db.parse(mapfile);		
 			
 			NodeList xians = doc.getElementsByTagName("xian");
-			int shang = 0,xia = 0;	//Ò»¸öµØÆ½ÏßµÄÉÏÏÂ×÷ÓÃÓò
-			for(int i = 0;i < xians.getLength();i++){	//Ñ­»·µØÆ½Ïß				
+			int shang = 0,xia = 0;	//ä¸€ä¸ªåœ°å¹³çº¿çš„ä¸Šä¸‹ä½œç”¨åŸŸ
+			for(int i = 0;i < xians.getLength();i++){	//å¾ªç¯åœ°å¹³çº¿				
 				xia = Integer.parseInt(((Element)xians.item(i)).getAttribute("height"));			
 				NodeList duans = ((Element)xians.item(i)).getElementsByTagName("duan");
-				ArrayList arraylist = new ArrayList();	//µØÆ½Ïß,´Ë´¦ÔİÊ±µÄ				
-				for(int j = 0;j < duans.getLength();j++){	//Ñ­»·µØÆ½ÏßÖĞµÄÃ¿Ò»¸ö¶Î						
+				ArrayList arraylist = new ArrayList();	//åœ°å¹³çº¿,æ­¤å¤„æš‚æ—¶çš„				
+				for(int j = 0;j < duans.getLength();j++){	//å¾ªç¯åœ°å¹³çº¿ä¸­çš„æ¯ä¸€ä¸ªæ®µ						
 					Element duan = (Element)duans.item(j);
 					Map_duan map_duan = new Map_duan();					
 					Element start = (Element)duan.getElementsByTagName("start").item(0);					
@@ -66,7 +66,7 @@ public class GameMap {
 				dipingxians.add(dipingxian);
 			}
 			/*
-			Element xian = (Element)doc.getElementsByTagName("xian").item(0);	//µÃµ½Ò»Ğ©Ä¬ÈÏµÄ²»¿É¶¯Ì¬¸ü¸ÄµÄÊôĞÔ£¬¿í£¬¸ß
+			Element xian = (Element)doc.getElementsByTagName("xian").item(0);	//å¾—åˆ°ä¸€äº›é»˜è®¤çš„ä¸å¯åŠ¨æ€æ›´æ”¹çš„å±æ€§ï¼Œå®½ï¼Œé«˜
 			NodeList duans = xian.getElementsByTagName("duan");		
 			
 			for(int i = 0;i < duans.getLength();i++){
@@ -85,10 +85,10 @@ public class GameMap {
 				arraylist.add(map_duan);
 			}
 			*/
-			System.out.println("¶ÁµØÍ¼ÎÄ¼şOVER");
-			System.out.println("´òÓ¡¶ÁÈëµØÍ¼ĞÅÏ¢ begin");	
+			System.out.println("è¯»åœ°å›¾æ–‡ä»¶OVER");
+			System.out.println("æ‰“å°è¯»å…¥åœ°å›¾ä¿¡æ¯ begin");	
 			for(int i = 0;i < dipingxians.size();i++){							
-				System.out.println("---Ò»ÌõµØÆ½Ïß---");
+				System.out.println("---ä¸€æ¡åœ°å¹³çº¿---");
 				System.out.println(	((Dipingxian)dipingxians.get(i)).shang);
 				System.out.println(	((Dipingxian)dipingxians.get(i)).xia);
 				System.out.println();
@@ -99,9 +99,9 @@ public class GameMap {
 					System.out.println(((Map_duan)((Dipingxian)dipingxians.get(i)).duans.get(j)).kong);
 				}				
 			}
-			System.out.println("´òÓ¡¶ÁÈëµØÍ¼ĞÅÏ¢ over");
+			System.out.println("æ‰“å°è¯»å…¥åœ°å›¾ä¿¡æ¯ over");
 			/*
-			for(int i = 0;i < arraylist.size();i++){	//±éÀúÏÔÊ¾ÁĞ±íÖĞµÄÔªËØ	µ÷ÊÔÓÃ
+			for(int i = 0;i < arraylist.size();i++){	//éå†æ˜¾ç¤ºåˆ—è¡¨ä¸­çš„å…ƒç´ 	è°ƒè¯•ç”¨
 				System.out.println(((Map_duan)arraylist.get(i)).end);
 			}
 			//*/
@@ -111,7 +111,7 @@ public class GameMap {
 		}
 	}
 	
-	public static class Map_duan{	//ÃèÊöµØÍ¼ÖĞÒ»¸ö¶ÎµÄÀà
+	public static class Map_duan{	//æè¿°åœ°å›¾ä¸­ä¸€ä¸ªæ®µçš„ç±»
 		public int start;
 		public int end;
 		public boolean kong;

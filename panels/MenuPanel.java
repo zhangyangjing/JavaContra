@@ -22,17 +22,17 @@ import java.util.Timer;
 import java.util.TimerTask;
 
 public class MenuPanel extends JPanel implements KeyListener,FocusListener {
-	private java.util.Timer timer; //Ñ­»·¶¨Ê±¼ì²âÊÇ·ñ¼ÌĞø
-	private Vector repository;	//¶¨ÒåÊÂ¼ş¼àÌıÆ÷¼¯
+	private java.util.Timer timer; //å¾ªç¯å®šæ—¶æ£€æµ‹æ˜¯å¦ç»§ç»­
+	private Vector repository;	//å®šä¹‰äº‹ä»¶ç›‘å¬å™¨é›†
 	events.Panel_over_linstener_jiekou dl;
 	//private events.MenuPanel_over_linstener_jiekou dl;
-	int heigth,weidth;	//¶¨ÒåÊı¾İ,¿í¸ß
-	int selectid;	//µ±Ç°µÄÑ¡Ïî
-	public boolean gonging;	//ÊÇ·ñ¼ÌĞø
-	private int x,y;	//µÚÒ»¸öÑ¡ÏîÖ¸±êµÄÎ»ÖÃ
+	int heigth,weidth;	//å®šä¹‰æ•°æ®,å®½é«˜
+	int selectid;	//å½“å‰çš„é€‰é¡¹
+	public boolean gonging;	//æ˜¯å¦ç»§ç»­
+	private int x,y;	//ç¬¬ä¸€ä¸ªé€‰é¡¹æŒ‡æ ‡çš„ä½ç½®
 	Image selectimg;
 	BufferedImage bufimg;
-	Sequencer midi;	//²¥·ÅÒôÀÖµÄ±äÁ¿
+	Sequencer midi;	//æ’­æ”¾éŸ³ä¹çš„å˜é‡
 	Sequencer midis;	
 	
 	public MenuPanel(){
@@ -41,34 +41,34 @@ public class MenuPanel extends JPanel implements KeyListener,FocusListener {
 		selectid = 0;
 		x = 34;
 		y = 142;
-		Image img = this.getToolkit().createImage("image\\menu.jpg");
-		selectimg = this.getToolkit().createImage("image\\xueze.jpg");
-		MediaTracker tracker = new MediaTracker(this);	//µÈ´ıÍ¼Æ¬¼ÓÔØÍê³É
+		Image img = this.getToolkit().createImage("image/menu.jpg");
+		selectimg = this.getToolkit().createImage("image/xueze.jpg");
+		MediaTracker tracker = new MediaTracker(this);	//ç­‰å¾…å›¾ç‰‡åŠ è½½å®Œæˆ
 		tracker.addImage(img, 0);
 		tracker.addImage(selectimg, 1);
 		try     
         {   
-			tracker.waitForAll();   //µÈ´ıÈ«²¿¼ÓÈë   
+			tracker.waitForAll();   //ç­‰å¾…å…¨éƒ¨åŠ å…¥   
         }   
         catch   (Exception   ex)     
         {   
             System.err.println(ex.toString());   
         }
         
-        bufimg = new BufferedImage(img.getWidth(null),img.getHeight(null),BufferedImage.TYPE_INT_RGB);	//½¨Á¢»º³åÍ¼Æ¬
+        bufimg = new BufferedImage(img.getWidth(null),img.getHeight(null),BufferedImage.TYPE_INT_RGB);	//å»ºç«‹ç¼“å†²å›¾ç‰‡
 		Graphics2D buf_grafc = bufimg.createGraphics();
-		this.addKeyListener(this);	//Ìí¼Ó¼üÅÌ¼àÌıÊÂ¼ş
-		this.addFocusListener(this);	//Ìí¼Ó½¹µã¼àÌıÊÂ¼ş
-        buf_grafc.drawImage(img,0,0,null);	//½«±³¾°»­µ½»º³åÍ¼Æ¬        
+		this.addKeyListener(this);	//æ·»åŠ é”®ç›˜ç›‘å¬äº‹ä»¶
+		this.addFocusListener(this);	//æ·»åŠ ç„¦ç‚¹ç›‘å¬äº‹ä»¶
+        buf_grafc.drawImage(img,0,0,null);	//å°†èƒŒæ™¯ç”»åˆ°ç¼“å†²å›¾ç‰‡        
         
         try {
-        	//²¥·ÅmidÊµÑé´úÂë
+        	//æ’­æ”¾midå®éªŒä»£ç 
         	///*
-            Sequence seq = MidiSystem.getSequence(new File("music\\bgmusic.mid"));
+            Sequence seq = MidiSystem.getSequence(new File("music/bgmusic.mid"));
             midi = MidiSystem.getSequencer();
             midi.open();
             midi.setSequence(seq);
-            midi.setLoopCount(Sequencer.LOOP_CONTINUOUSLY);	//ÉèÖÃÑ­»·²¥·Å
+            midi.setLoopCount(Sequencer.LOOP_CONTINUOUSLY);	//è®¾ç½®å¾ªç¯æ’­æ”¾
             midi.start();    
             
             
@@ -81,23 +81,23 @@ public class MenuPanel extends JPanel implements KeyListener,FocusListener {
         timer.schedule(
         new TimerTask() { public void run(){check_gonging();} }, 0, 50); 
 	}
-	public void paint(Graphics g){ 	//ÖØĞ´ÁË»æÖÆº¯Êı
+	public void paint(Graphics g){ 	//é‡å†™äº†ç»˜åˆ¶å‡½æ•°
 		Graphics2D buf_grafc = bufimg.createGraphics();
 		buf_grafc.setColor(Color.BLACK);
-		buf_grafc.fillRect(x,y,21,35);	//¸²¸ÇµôÔ­À´µÄÑ¡ÏîÖ¸±ê
-		buf_grafc.drawImage(selectimg,x,y+selectid*15,null);	//Ïò±³¾°Í¼ÉÏ»æ»­Ñ¡ÏîÖ¸±ê
+		buf_grafc.fillRect(x,y,21,35);	//è¦†ç›–æ‰åŸæ¥çš„é€‰é¡¹æŒ‡æ ‡
+		buf_grafc.drawImage(selectimg,x,y+selectid*15,null);	//å‘èƒŒæ™¯å›¾ä¸Šç»˜ç”»é€‰é¡¹æŒ‡æ ‡
 		
 		Graphics2D gphc2d = (Graphics2D)g;
-		gphc2d.drawImage(bufimg,0,0,null);	//»­µ½Ãæ°åÉÏ		
+		gphc2d.drawImage(bufimg,0,0,null);	//ç”»åˆ°é¢æ¿ä¸Š		
 	}
-	public void addPanel_over_linstener(events.Panel_over_linstener_jiekou hdl) {	//×Ô¶¨ÒåÊÂ¼şµÄÊÂ¼şÔ´·½´¦Àí	
-		repository.addElement(hdl);//Õâ²½Òª×¢ÒâÍ¬²½ÎÊÌâ
+	public void addPanel_over_linstener(events.Panel_over_linstener_jiekou hdl) {	//è‡ªå®šä¹‰äº‹ä»¶çš„äº‹ä»¶æºæ–¹å¤„ç†	
+		repository.addElement(hdl);//è¿™æ­¥è¦æ³¨æ„åŒæ­¥é—®é¢˜
 	}
 	public void removeMenuPanel_over_linstener(events.Panel_over_linstener_jiekou hdl) {
-		repository.removeElement(hdl);//Õâ²½Òª×¢ÒâÍ¬²½ÎÊÌâ
+		repository.removeElement(hdl);//è¿™æ­¥è¦æ³¨æ„åŒæ­¥é—®é¢˜
 	}
-	public void shijian(events.Panel_over_event event) {	//´¥·¢Ö´ĞĞÊÂ¼ş
-	    Enumeration enum = repository.elements();//Õâ²½Òª×¢ÒâÍ¬²½ÎÊÌâ
+	public void shijian(events.Panel_over_event event) {	//è§¦å‘æ‰§è¡Œäº‹ä»¶
+	    Enumeration enum = repository.elements();//è¿™æ­¥è¦æ³¨æ„åŒæ­¥é—®é¢˜
 	    while(enum.hasMoreElements())
 	    {
 	    	dl = (events.Panel_over_linstener_jiekou)enum.nextElement();
@@ -106,7 +106,7 @@ public class MenuPanel extends JPanel implements KeyListener,FocusListener {
 	  }
 	private void check_gonging() {
 		///*
-		if(gonging == false){	//Èç¹ûÔİÍ£ÁË
+		if(gonging == false){	//å¦‚æœæš‚åœäº†
 			if(midi.isRunning())
 				midi.stop();
 			if(midis != null &&midis.isRunning())
@@ -123,9 +123,9 @@ public class MenuPanel extends JPanel implements KeyListener,FocusListener {
 	private void playselectmusic(){
 		
 		 try {
-        	//²¥·ÅmidÊµÑé´úÂë
+        	//æ’­æ”¾midå®éªŒä»£ç 
 		 	///*		 		
-		 		Sequence seqs = MidiSystem.getSequence(new File("music\\pass.mid"));		 		
+		 		Sequence seqs = MidiSystem.getSequence(new File("music/pass.mid"));		 		
 	            midis = MidiSystem.getSequencer();
 	            midis.setSequence(seqs);
 	            midis.open();            
@@ -135,8 +135,8 @@ public class MenuPanel extends JPanel implements KeyListener,FocusListener {
             }       			
         catch (Exception ex) {}        
 	}
-	public void keyPressed(KeyEvent e) {	//¼üÅÌ¼àÌı½Ó¿ÚµÄÊµÏÖ
-		if(e.getKeyCode()== KeyEvent.VK_KP_DOWN || e.getKeyCode()== KeyEvent.VK_DOWN ){	//°´ÏÂÏòÏÂ¼ü
+	public void keyPressed(KeyEvent e) {	//é”®ç›˜ç›‘å¬æ¥å£çš„å®ç°
+		if(e.getKeyCode()== KeyEvent.VK_KP_DOWN || e.getKeyCode()== KeyEvent.VK_DOWN ){	//æŒ‰ä¸‹å‘ä¸‹é”®
 			if (selectid == 0)
 				selectid = 1;
 			else
@@ -145,7 +145,7 @@ public class MenuPanel extends JPanel implements KeyListener,FocusListener {
 			this.repaint();			
 			System.out.println(selectid);
 		}
-		if(e.getKeyCode()== KeyEvent.VK_KP_UP || e.getKeyCode()== KeyEvent.VK_UP ){	//°´ÏÂÏòÉÏ¼ü
+		if(e.getKeyCode()== KeyEvent.VK_KP_UP || e.getKeyCode()== KeyEvent.VK_UP ){	//æŒ‰ä¸‹å‘ä¸Šé”®
 			if (selectid == 1)
 				selectid = 0;				
 			else
@@ -154,7 +154,7 @@ public class MenuPanel extends JPanel implements KeyListener,FocusListener {
 			this.repaint();
 			System.out.println(selectid);
 		}
-		if(e.getKeyCode()== KeyEvent.VK_ENTER){		//°´ÏÂ»Ø³µ¼ü£¬½øÈëÓÎÏ·
+		if(e.getKeyCode()== KeyEvent.VK_ENTER){		//æŒ‰ä¸‹å›è½¦é”®ï¼Œè¿›å…¥æ¸¸æˆ
 			timer.cancel();
 			///*
 			if(midi.isRunning())

@@ -18,29 +18,29 @@ import jingling.Zidanlei;
 
 
 public class Jingling extends Component{
-	public static final int DZ_ZOU		= 0;	//¶¨ÒåÓÃµ½µÄÃ¶¾Ù
+	public static final int DZ_ZOU		= 0;	//å®šä¹‰ç”¨åˆ°çš„æšä¸¾
 	
 	public static final int DZ_TING		= 3;
 	public static final int DZ_PA		= 5;
 	public static final int DZ_FX_QIAN	= 6;
 	public static final int DZ_FX_HOU	= 7;
 	
-	public int linjiea;	//ÈÎÎñÔÚµØÍ¼Á½Í·µÄÁÙ½çÇøÀï£¬²»ÄÜÔÚÒÆ¶¯µØÍ¼£¬Ó¦ÒÆ¶¯ÈÎÎñ¡£
+	public int linjiea;	//ä»»åŠ¡åœ¨åœ°å›¾ä¸¤å¤´çš„ä¸´ç•ŒåŒºé‡Œï¼Œä¸èƒ½åœ¨ç§»åŠ¨åœ°å›¾ï¼Œåº”ç§»åŠ¨ä»»åŠ¡ã€‚
 	public int linjieb;
-	public int zongx;	//ÈÎÎñÔÚÕû¸ö¹Ø¿¨ÖĞµÄÎ»ÖÃ
-	public int chaolinjie; 	//ÔÙ×ßµ½µØÍ¼½áÎ²´¦µÄÁÙ½çÇøÊÇ£¬³¬³öÁËÁÙ½ç¶àÉÙ
+	public int zongx;	//ä»»åŠ¡åœ¨æ•´ä¸ªå…³å¡ä¸­çš„ä½ç½®
+	public int chaolinjie; 	//å†èµ°åˆ°åœ°å›¾ç»“å°¾å¤„çš„ä¸´ç•ŒåŒºæ˜¯ï¼Œè¶…å‡ºäº†ä¸´ç•Œå¤šå°‘
 	
-	public int x,y;	//µ±Ç°Í¼Æ¬µÄ×ø±ê£¬ÓÒÏÂ½ÇµÄ £¡
-	private int dongzuo_fx_current;	//µ±Ç°µÄ¶¯×÷µÄ·½Ïò
-	private int dongzuo_type_current;	//µ±Ç°¶¯×÷µÄÀàĞÍ:Ìø,×ß,Í£
-	private int dongzuo_tyep_yonghu;	//ÓÃ»§ÒªÇóµÄ¶¯×÷ÀàĞÍ	
+	public int x,y;	//å½“å‰å›¾ç‰‡çš„åæ ‡ï¼Œå³ä¸‹è§’çš„ ï¼
+	private int dongzuo_fx_current;	//å½“å‰çš„åŠ¨ä½œçš„æ–¹å‘
+	private int dongzuo_type_current;	//å½“å‰åŠ¨ä½œçš„ç±»å‹:è·³,èµ°,åœ
+	private int dongzuo_tyep_yonghu;	//ç”¨æˆ·è¦æ±‚çš„åŠ¨ä½œç±»å‹	
 	
-	private boolean is_tiao;	//ÊÇ²»ÊÇÔÚÌøµÄ×´Ì¬
-	private boolean tiao_state;	//ÌøµÄ×´Ì¬£¬ÏòÉÏÎªtrue
-	private int tiao_heigh;	//µ±Ç°ÌøµÄ¸ß¶È
-	public int tiao_max;	//ÌøµÄ×î¸ß¸ß¶È
+	private boolean is_tiao;	//æ˜¯ä¸æ˜¯åœ¨è·³çš„çŠ¶æ€
+	private boolean tiao_state;	//è·³çš„çŠ¶æ€ï¼Œå‘ä¸Šä¸ºtrue
+	private int tiao_heigh;	//å½“å‰è·³çš„é«˜åº¦
+	public int tiao_max;	//è·³çš„æœ€é«˜é«˜åº¦
 	
-	private Dongzuo zou_qian;	//¸÷ÖÖ¶¯×÷µÄÍ¼Æ¬
+	private Dongzuo zou_qian;	//å„ç§åŠ¨ä½œçš„å›¾ç‰‡
 	private Dongzuo zou_hou;
 	private Dongzuo ting_qian;
 	private Dongzuo ting_hou;
@@ -48,10 +48,10 @@ public class Jingling extends Component{
 	private Dongzuo pa_hou;
 	private Dongzuo tiao;
 	
-	//private ArrayList mapdipingxian;	//µØÍ¼ÉÏµÄµØÆ½Ïß£¬ÓÃÀ´²âÊÔÈËÎïÊÇ²»ÊÇÔÚµØÆ½ÏßÉÏ×ß£¬·ñÔòÓ¦ÍùÏÂµô¡£
-	private float diao_num;	//ÏòÏÂµôµÄËÙ¶È
+	//private ArrayList mapdipingxian;	//åœ°å›¾ä¸Šçš„åœ°å¹³çº¿ï¼Œç”¨æ¥æµ‹è¯•äººç‰©æ˜¯ä¸æ˜¯åœ¨åœ°å¹³çº¿ä¸Šèµ°ï¼Œå¦åˆ™åº”å¾€ä¸‹æ‰ã€‚
+	private float diao_num;	//å‘ä¸‹æ‰çš„é€Ÿåº¦
 	
-	private Vector repository;	//¶¨ÒåÊÂ¼ş¼àÌıÆ÷¼¯
+	private Vector repository;	//å®šä¹‰äº‹ä»¶ç›‘å¬å™¨é›†
 	private Vector addzidanvect;	
 	events.Panel_over_linstener_jiekou dl;
 	
@@ -76,48 +76,48 @@ public class Jingling extends Component{
 		
 		dongzuo_fx_current = Jingling.DZ_FX_QIAN;
 		dongzuo_type_current = Jingling.DZ_TING;
-		zou_qian	= new Dongzuo("image\\jingling_zou_qian.png",3);
-		zou_hou		= new Dongzuo("image\\jingling_zou_hou.png",3);
-		ting_qian	= new Dongzuo("image\\jingling_ting_qian.png",1);
-		ting_hou	= new Dongzuo("image\\jingling_ting_hou.png",1);
-		pa_qian		= new Dongzuo("image\\jingling_pa_qian.png",1);
-		pa_hou		= new Dongzuo("image\\jingling_pa_hou.png",1);
-		tiao		= new Dongzuo("image\\jingling_tiao.png",4);
+		zou_qian	= new Dongzuo("image/jingling_zou_qian.png",3);
+		zou_hou		= new Dongzuo("image/jingling_zou_hou.png",3);
+		ting_qian	= new Dongzuo("image/jingling_ting_qian.png",1);
+		ting_hou	= new Dongzuo("image/jingling_ting_hou.png",1);
+		pa_qian		= new Dongzuo("image/jingling_pa_qian.png",1);
+		pa_hou		= new Dongzuo("image/jingling_pa_hou.png",1);
+		tiao		= new Dongzuo("image/jingling_tiao.png",4);
 	}
 	private void move(){
 		this.y +=this.diao_num;
 		
-		if(y > 400){	//²âÊÔÈËËÀÁËÃ»
-			System.out.println("ÈËËÀÁË£¡£¡£¡£¡");
+		if(y > 400){	//æµ‹è¯•äººæ­»äº†æ²¡
+			System.out.println("äººæ­»äº†ï¼ï¼ï¼ï¼");
 			shijian(new events.Panel_over_event(this));
 		}
 		
 		if(dongzuo_type_current == DZ_ZOU){			
 			switch(dongzuo_fx_current){
-				case DZ_FX_QIAN :	//ÏòÇ°×ß	
-					if(zongx <= linjiea){	//´ÓÇ°Ãæ¿ªÍ·ÁÙ½çÍùºó×ß£¬ÓĞ¿ÉÄÜ×ß³öÁÙ½çÇøÓò
-						if(x > linjiea){	//ÒÑ¾­×ß³öÁÙ½çÇø
+				case DZ_FX_QIAN :	//å‘å‰èµ°	
+					if(zongx <= linjiea){	//ä»å‰é¢å¼€å¤´ä¸´ç•Œå¾€åèµ°ï¼Œæœ‰å¯èƒ½èµ°å‡ºä¸´ç•ŒåŒºåŸŸ
+						if(x > linjiea){	//å·²ç»èµ°å‡ºä¸´ç•ŒåŒº
 							x = linjiea;
 							zongx = linjiea;
 						}
 						else
 						{
-							x++;	//»¹Ã»ÓĞ×ß³öÁÙ½çÇø
+							x++;	//è¿˜æ²¡æœ‰èµ°å‡ºä¸´ç•ŒåŒº
 						}
 					}
-					if(zongx > linjieb){	//ÔÚÎ²²¿µÄÁÙ½çÇø£¨»¹Òª¿¼ÂÇÈËÎï»á×ß³ö»­Ãæ£©						
+					if(zongx > linjieb){	//åœ¨å°¾éƒ¨çš„ä¸´ç•ŒåŒºï¼ˆè¿˜è¦è€ƒè™‘äººç‰©ä¼šèµ°å‡ºç”»é¢ï¼‰						
 						x++;
 						chaolinjie++;
 					}
-					if(zongx >= linjiea && zongx <= linjieb){	//ÔÚ·ÇÁÙ½çÇøµÄÖĞ¼äÇø¶Î						
+					if(zongx >= linjiea && zongx <= linjieb){	//åœ¨éä¸´ç•ŒåŒºçš„ä¸­é—´åŒºæ®µ						
 						zongx++;
 					}
 					break;
-				case DZ_FX_HOU :	//Ïòºó×ß		
-					if(zongx <= linjiea)	//ÔÚÍ·ÁÙ½çÇø£¬Òª¿¼ÂÇ»á×ß³ö»­Ãæ
+				case DZ_FX_HOU :	//å‘åèµ°		
+					if(zongx <= linjiea)	//åœ¨å¤´ä¸´ç•ŒåŒºï¼Œè¦è€ƒè™‘ä¼šèµ°å‡ºç”»é¢
 						x--;
-					if(zongx > linjieb){	//ÔÚÎ²ÁÙ½çÇø
-						if(chaolinjie < 0){	//ÒÑ¾­×ß³öÁÙ½çÇø	//Õâ¸öÅĞ¶ÏÓĞ´íÎó
+					if(zongx > linjieb){	//åœ¨å°¾ä¸´ç•ŒåŒº
+						if(chaolinjie < 0){	//å·²ç»èµ°å‡ºä¸´ç•ŒåŒº	//è¿™ä¸ªåˆ¤æ–­æœ‰é”™è¯¯
 							//x = linjieb;
 							zongx = linjieb;
 						}
@@ -127,22 +127,22 @@ public class Jingling extends Component{
 							chaolinjie--;
 						}					
 					}
-					if(zongx >= linjiea && zongx <= linjieb)	//ÔÚ·ÇÁÙ½çÇøµÄÖĞ¼ä¶Î
+					if(zongx >= linjiea && zongx <= linjieb)	//åœ¨éä¸´ç•ŒåŒºçš„ä¸­é—´æ®µ
 						zongx--;
 					break;
 			}
 		}
-		if(this.is_tiao == true){	//´¦ÀíÌøÔ¾	
-			if(this.tiao_state == true){	//·½ÏòÏòÉÏ
+		if(this.is_tiao == true){	//å¤„ç†è·³è·ƒ	
+			if(this.tiao_state == true){	//æ–¹å‘å‘ä¸Š
 				y--;
 				this.tiao_heigh++;
-				if(this.tiao_heigh > this.tiao_max)	//Èç¹ûÌøµ½ÁË¶¥
+				if(this.tiao_heigh > this.tiao_max)	//å¦‚æœè·³åˆ°äº†é¡¶
 					this.tiao_state = false;				
 			}
 			else{
 				y++;
 				this.tiao_heigh--;
-				if(this.tiao_heigh == 0){	//Ìøµ½ÁË¿ªÊ¼ÌøµÄÎ»ÖÃ
+				if(this.tiao_heigh == 0){	//è·³åˆ°äº†å¼€å§‹è·³çš„ä½ç½®
 					this.tiao_state = true;
 					this.is_tiao = false;
 				}
@@ -151,16 +151,16 @@ public class Jingling extends Component{
 		
 		
 		
-			//´¦ÀíÍùÏÂµôµÄÇé¿ö£¬ÏÈµÃµ½µ±Ç°yËùÔÚµØÆ½ÏßµÄ¸ß¶È£¬½ÅÏÂÊÇ·ñÎª¿Õ
+			//å¤„ç†å¾€ä¸‹æ‰çš„æƒ…å†µï¼Œå…ˆå¾—åˆ°å½“å‰yæ‰€åœ¨åœ°å¹³çº¿çš„é«˜åº¦ï¼Œè„šä¸‹æ˜¯å¦ä¸ºç©º
 			
 				boolean kong = true;
-				int dpx_height = 500;	//µ±Ç°µØÆ½ÏßµÄ¸ß¶È
+				int dpx_height = 500;	//å½“å‰åœ°å¹³çº¿çš„é«˜åº¦
 				
 				for(int i = 0;i < GameMap.dipingxians.size();i++){
-					if(this.y > ((GameMap.Dipingxian)GameMap.dipingxians.get(i)).shang && this.y <= ((GameMap.Dipingxian)GameMap.dipingxians.get(i)).xia){	//µÃµ½µ±Ç°Î»ÖÃµÄµØÆ½Ïß
-						dpx_height = ((GameMap.Dipingxian)GameMap.dipingxians.get(i)).xia;	//ÉèÖÃµ±Ç°µØÆ½ÏßµÄ¸ß¶È		
+					if(this.y > ((GameMap.Dipingxian)GameMap.dipingxians.get(i)).shang && this.y <= ((GameMap.Dipingxian)GameMap.dipingxians.get(i)).xia){	//å¾—åˆ°å½“å‰ä½ç½®çš„åœ°å¹³çº¿
+						dpx_height = ((GameMap.Dipingxian)GameMap.dipingxians.get(i)).xia;	//è®¾ç½®å½“å‰åœ°å¹³çº¿çš„é«˜åº¦		
 						
-						for(int j =0;j < ((GameMap.Dipingxian)GameMap.dipingxians.get(i)).duans.size();j++){	//µÃµ½µ±Ç°ËùÔÚÎ»ÖÃÊÇ·ñ½ÅÏÂÎª¿ÕµÄ
+						for(int j =0;j < ((GameMap.Dipingxian)GameMap.dipingxians.get(i)).duans.size();j++){	//å¾—åˆ°å½“å‰æ‰€åœ¨ä½ç½®æ˜¯å¦è„šä¸‹ä¸ºç©ºçš„
 							if( this.zongx > ((GameMap.Map_duan)((GameMap.Dipingxian)GameMap.dipingxians.get(i)).duans.get(j)).start && this.zongx < ((GameMap.Map_duan)((GameMap.Dipingxian)GameMap.dipingxians.get(i)).duans.get(j)).end ){
 								kong = ((GameMap.Map_duan)((GameMap.Dipingxian)GameMap.dipingxians.get(i)).duans.get(j)).kong ;
 								break;
@@ -170,12 +170,12 @@ public class Jingling extends Component{
 					}					
 				}
 				//System.out.println(y);////////////////////////////////////////				
-				//System.out.println("µ±Ç°µÄµØÆ½Ïß£º" + dpx_height);
+				//System.out.println("å½“å‰çš„åœ°å¹³çº¿ï¼š" + dpx_height);
 				
-				//System.out.println("µ±Ç°µØÆ½Ïß£º" + dpx_height + "µ±Ç°¿Õ£º" + kong);
+				//System.out.println("å½“å‰åœ°å¹³çº¿ï¼š" + dpx_height + "å½“å‰ç©ºï¼š" + kong);
 				
 				/*
-				for(int i = 0;i < mapdipingxian.size();i++){	//µÃµ½µ±Ç°ËùÔÚÎ»ÖÃÊÇ·ñ½ÅÏÂÎª¿ÕµÄ
+				for(int i = 0;i < mapdipingxian.size();i++){	//å¾—åˆ°å½“å‰æ‰€åœ¨ä½ç½®æ˜¯å¦è„šä¸‹ä¸ºç©ºçš„
 					if(this.zongx > ((GameMap.Map_duan)mapdipingxian.get(i)).start && this.zongx < ((GameMap.Map_duan)mapdipingxian.get(i)).end){
 						kong = ((GameMap.Map_duan)mapdipingxian.get(i)).kong ;
 						break;
@@ -183,35 +183,35 @@ public class Jingling extends Component{
 				}
 				*/
 				
-				if(this.is_tiao != true){	//¼ì²â½ÅÏÂÊÇ²»ÊÇ¿ÕµÄ£¬µ«Òª·ÀÖ¹Ó°ÏìÌøµÄĞ§¹û	
+				if(this.is_tiao != true){	//æ£€æµ‹è„šä¸‹æ˜¯ä¸æ˜¯ç©ºçš„ï¼Œä½†è¦é˜²æ­¢å½±å“è·³çš„æ•ˆæœ	
 					
-						if(kong == false || this.y < dpx_height){	//½ÅÏÂÊÇ¿ÕµÄ»°ÏòÏÂµô
-							System.out.println("ÏòÏÂµôÁË");	
+						if(kong == false || this.y < dpx_height){	//è„šä¸‹æ˜¯ç©ºçš„è¯å‘ä¸‹æ‰
+							System.out.println("å‘ä¸‹æ‰äº†");	
 							this.diao_num += 0.07;							
 						}	
-						if(kong == true){	//µ±Ç°yÎ»ÖÃºÍµØÆ½Ïß²î¾à²»¹»Ò»´Î¼õµÄ»°Ö±½Óµ½µØÆ½Ïß
+						if(kong == true){	//å½“å‰yä½ç½®å’Œåœ°å¹³çº¿å·®è·ä¸å¤Ÿä¸€æ¬¡å‡çš„è¯ç›´æ¥åˆ°åœ°å¹³çº¿
 							if(dpx_height - this.y < this.diao_num ){
-								this.diao_num = 0;	//ÕâÀïÓĞÎÊÌâ£¬µ±ÉÏÃæÒ»¾äÉèÖÃÏÂµô£¬ÕâÀïÓÖÈ¡ÏûÁËÏÂµô
+								this.diao_num = 0;	//è¿™é‡Œæœ‰é—®é¢˜ï¼Œå½“ä¸Šé¢ä¸€å¥è®¾ç½®ä¸‹æ‰ï¼Œè¿™é‡Œåˆå–æ¶ˆäº†ä¸‹æ‰
 								this.y = dpx_height;
 							}
 						}
 				}
 				
 				/*
-				if(this.is_tiao != true){	//¼ì²â½ÅÏÂÊÇ²»ÊÇ¿ÕµÄ£¬µ«Òª·ÀÖ¹Ó°ÏìÌøµÄĞ§¹û	
+				if(this.is_tiao != true){	//æ£€æµ‹è„šä¸‹æ˜¯ä¸æ˜¯ç©ºçš„ï¼Œä½†è¦é˜²æ­¢å½±å“è·³çš„æ•ˆæœ	
 				
-					if(kong == false || this.y < dpx_height){	//½ÅÏÂÊÇ¿ÕµÄ»°ÏòÏÂµô
-						System.out.println("ÏòÏÂµôÁË");	
+					if(kong == false || this.y < dpx_height){	//è„šä¸‹æ˜¯ç©ºçš„è¯å‘ä¸‹æ‰
+						System.out.println("å‘ä¸‹æ‰äº†");	
 						this.diao_num += 0.1;
-						if(dpx_height - this.y < this.diao_num ){	//µ±Ç°yÎ»ÖÃºÍµØÆ½Ïß²î¾à²»¹»Ò»´Î¼õµÄ»°Ö±½Óµ½µØÆ½Ïß
-							this.diao_num = 0;	//ÕâÀïÓĞÎÊÌâ£¬µ±ÉÏÃæÒ»¾äÉèÖÃÏÂµô£¬ÕâÀïÓÖÈ¡ÏûÁËÏÂµô
+						if(dpx_height - this.y < this.diao_num ){	//å½“å‰yä½ç½®å’Œåœ°å¹³çº¿å·®è·ä¸å¤Ÿä¸€æ¬¡å‡çš„è¯ç›´æ¥åˆ°åœ°å¹³çº¿
+							this.diao_num = 0;	//è¿™é‡Œæœ‰é—®é¢˜ï¼Œå½“ä¸Šé¢ä¸€å¥è®¾ç½®ä¸‹æ‰ï¼Œè¿™é‡Œåˆå–æ¶ˆäº†ä¸‹æ‰
 							this.y = dpx_height;
 						}
 					}					
 				}
 				*/
-				if(this.is_tiao == true && this.tiao_state == false){	//´ÓµÍµØÆ½ÏßÌøµ½¸ß´¦µÄµØÆ½ÏßÉÏµÄÇé¿ö
-					if(y == dpx_height && kong == true){	//ÒÑ¾­µ½ÁË¸ß´¦µØÆ½ÏßµÄ¸ß¶È
+				if(this.is_tiao == true && this.tiao_state == false){	//ä»ä½åœ°å¹³çº¿è·³åˆ°é«˜å¤„çš„åœ°å¹³çº¿ä¸Šçš„æƒ…å†µ
+					if(y == dpx_height && kong == true){	//å·²ç»åˆ°äº†é«˜å¤„åœ°å¹³çº¿çš„é«˜åº¦
 						this.is_tiao = false;
 						this.tiao_state = true;
 						this.tiao_heigh = 0;
@@ -220,41 +220,41 @@ public class Jingling extends Component{
 				}
 				
 				
-				//if( (kong == false || this.diao_num != 0)){	//ÍùÏÂµô
+				//if( (kong == false || this.diao_num != 0)){	//å¾€ä¸‹æ‰
 				//	this.diao_num += 0.05;
 				//}
 			}
 		//*/
 	
 	public void setdongzuo(int type){		
-		this.dongzuo_tyep_yonghu	= type;	//µ±Ç°µÄºÍÓÃ»§ÆÚ´ıµÄ£¬ÓĞ´ı¸Ä½ø¡£
+		this.dongzuo_tyep_yonghu	= type;	//å½“å‰çš„å’Œç”¨æˆ·æœŸå¾…çš„ï¼Œæœ‰å¾…æ”¹è¿›ã€‚
 		this.dongzuo_type_current	= type;	
 	}
 	public void tiao(){		
 		if(this.dongzuo_type_current == Jingling.DZ_PA){
-			System.out.println("ÓÉÓÚµ±Ç°Å¿×ÅÍùÏÂÌø£¬ËùÒÔµôÏÂÈ¥ÁË¡£");
-			y++;	//ÏòÏÂÒÆ¶¯Ò»¸öÏñËØ£¬»áµ¼ÖÂµØÆ½Ïß»»×÷ÏÂÃæµÄÒ»ÌõµØÆ½Ïß£¬´ïµ½ÁËÏòÏÂÌøµÄĞ§¹û
+			System.out.println("ç”±äºå½“å‰è¶´ç€å¾€ä¸‹è·³ï¼Œæ‰€ä»¥æ‰ä¸‹å»äº†ã€‚");
+			y++;	//å‘ä¸‹ç§»åŠ¨ä¸€ä¸ªåƒç´ ï¼Œä¼šå¯¼è‡´åœ°å¹³çº¿æ¢ä½œä¸‹é¢çš„ä¸€æ¡åœ°å¹³çº¿ï¼Œè¾¾åˆ°äº†å‘ä¸‹è·³çš„æ•ˆæœ
 			this.dongzuo_type_current = Jingling.DZ_TING;
 		}
 		else{
-			if(this.diao_num == 0)	//ÍùÏÂµôµÄÊ±ºò²»ÄÜÔÙÍùÉÏÌø
-				System.out.println("ÍùÉÏÃæÌøÁË");				
+			if(this.diao_num == 0)	//å¾€ä¸‹æ‰çš„æ—¶å€™ä¸èƒ½å†å¾€ä¸Šè·³
+				System.out.println("å¾€ä¸Šé¢è·³äº†");				
 				//System.out.println(y);				
 				this.is_tiao = true;
 		}
 	}
 	public void setfangxiang(int type){
-		//this.dongzuo_tyep_yonghu	= type;	//µ±Ç°µÄºÍÓÃ»§ÆÚ´ıµÄ£¬ÓĞ´ı¸Ä½ø¡£
+		//this.dongzuo_tyep_yonghu	= type;	//å½“å‰çš„å’Œç”¨æˆ·æœŸå¾…çš„ï¼Œæœ‰å¾…æ”¹è¿›ã€‚
 		this.dongzuo_fx_current	= type;
 	}
 	public void setxy(int x,int y){
 		this.x = x;
 		this.y = y;
 	}
-	/* ÓÉÓÚ°ÑGameMapÖĞµÄ±äÁ¿¸ÄÎª¾²Ì¬£¬¹ÊÕâÀïÉ¾È¥
+	/* ç”±äºæŠŠGameMapä¸­çš„å˜é‡æ”¹ä¸ºé™æ€ï¼Œæ•…è¿™é‡Œåˆ å»
 	public void set_map_dipingxian(ArrayList dpx){
 		this.mapdipingxian = dpx;		
-		System.out.println("¿ªÊ¼ÔÚ¾«ÁéÖĞ²âÊÔµØÍ¼");	//²âÊÔ
+		System.out.println("å¼€å§‹åœ¨ç²¾çµä¸­æµ‹è¯•åœ°å›¾");	//æµ‹è¯•
 		for(int i = 0;i < mapdipingxian.size();i++){			
 			System.out.println(((GameMap.Map_duan)mapdipingxian.get(i)).start);			
 		}		
@@ -271,25 +271,25 @@ public class Jingling extends Component{
 	}
 	public void todo(Graphics2D g){	
 		this.move();
-		if(this.is_tiao == true){ 			//Ìø
+		if(this.is_tiao == true){ 			//è·³
 			tiao.draw(g);
 		}
 		else
 		{
 			switch(dongzuo_type_current){
-				case Jingling.DZ_ZOU :		//×ß
+				case Jingling.DZ_ZOU :		//èµ°
 					if(dongzuo_fx_current == Jingling.DZ_FX_QIAN)
 						zou_qian.draw(g);
 					else
 						zou_hou.draw(g);
 					break;			
-				case Jingling.DZ_TING :		//Í£
+				case Jingling.DZ_TING :		//åœ
 					if(dongzuo_fx_current == Jingling.DZ_FX_QIAN)
 						ting_qian.draw(g);
 					else
 						ting_hou.draw(g);
 					break;
-				case Jingling.DZ_PA :		//Å¿
+				case Jingling.DZ_PA :		//è¶´
 					if(dongzuo_fx_current == Jingling.DZ_FX_QIAN)
 						pa_qian.draw(g);
 					else
@@ -297,12 +297,12 @@ public class Jingling extends Component{
 					break;			
 			}
 		}
-		//g.setColor(java.awt.Color.RED);	//µ÷ÊÔÓÃ
+		//g.setColor(java.awt.Color.RED);	//è°ƒè¯•ç”¨
 		//g.drawString("zongx:" + String.valueOf(zongx) + " x:" + String.valueOf(x) + " A:" + String.valueOf(linjiea) + " B:" + String.valueOf(linjieb),20,20);
 	}	
 	
-	public void shijian(events.Panel_over_event event) {	//´¥·¢Ö´ĞĞÊÂ¼ş
-	    Enumeration enum = repository.elements();//Õâ²½Òª×¢ÒâÍ¬²½ÎÊÌâ
+	public void shijian(events.Panel_over_event event) {	//è§¦å‘æ‰§è¡Œäº‹ä»¶
+	    Enumeration enum = repository.elements();//è¿™æ­¥è¦æ³¨æ„åŒæ­¥é—®é¢˜
 	    while(enum.hasMoreElements())
 	    {
 	    	dl = (events.Panel_over_linstener_jiekou)enum.nextElement();
@@ -310,7 +310,7 @@ public class Jingling extends Component{
 	    }
 	}
 	public void add_zidan(){
-		Enumeration enum = addzidanvect.elements();//Õâ²½Òª×¢ÒâÍ¬²½ÎÊÌâ
+		Enumeration enum = addzidanvect.elements();//è¿™æ­¥è¦æ³¨æ„åŒæ­¥é—®é¢˜
 		int fx = 0;
 		int zdx = this.zongx;
 		int zdy = this.y - 31;
@@ -324,7 +324,7 @@ public class Jingling extends Component{
 				zdx = this.zongx - 35;
 				break;
 		}
-		if(this.dongzuo_type_current == Jingling.DZ_PA){	//Èç¹ûÊÇÅ¿×ÅµÄ»°£¬×Óµ¯·¢³öµãÓ¦¸Ã¸üµÍÒ»Ğ©
+		if(this.dongzuo_type_current == Jingling.DZ_PA){	//å¦‚æœæ˜¯è¶´ç€çš„è¯ï¼Œå­å¼¹å‘å‡ºç‚¹åº”è¯¥æ›´ä½ä¸€äº›
 			zdy += 17;
 		}
 	    while(enum.hasMoreElements())
@@ -332,19 +332,19 @@ public class Jingling extends Component{
 	    	((events.Add_zidan_jiekou)enum.nextElement()).add_zidan(new events.Add_zidan_event(zdx,zdy,true,fx,this));	    	
 	    }
 	}
-	public void addPanel_over_linstener(events.Panel_over_linstener_jiekou hdl) {	//×Ô¶¨ÒåÊÂ¼şµÄÊÂ¼şÔ´·½´¦Àí	
-		repository.addElement(hdl);//Õâ²½Òª×¢ÒâÍ¬²½ÎÊÌâ
+	public void addPanel_over_linstener(events.Panel_over_linstener_jiekou hdl) {	//è‡ªå®šä¹‰äº‹ä»¶çš„äº‹ä»¶æºæ–¹å¤„ç†	
+		repository.addElement(hdl);//è¿™æ­¥è¦æ³¨æ„åŒæ­¥é—®é¢˜
 	}
-	public void addjia_zidan_listener(events.Add_zidan_jiekou hdl) {	//×Ô¶¨ÒåÊÂ¼şµÄÊÂ¼şÔ´·½´¦Àí	
-		addzidanvect.addElement(hdl);//Õâ²½Òª×¢ÒâÍ¬²½ÎÊÌâ
+	public void addjia_zidan_listener(events.Add_zidan_jiekou hdl) {	//è‡ªå®šä¹‰äº‹ä»¶çš„äº‹ä»¶æºæ–¹å¤„ç†	
+		addzidanvect.addElement(hdl);//è¿™æ­¥è¦æ³¨æ„åŒæ­¥é—®é¢˜
 	}
 	
 	class Dongzuo extends Component{
-		private int width,heigth;//Ã¿Ò»·ùÍ¼Æ¬µÄ³¤£¬¿í
-		private int draw_count;	//µ±Ç°µÄ¶¯×÷Í¼Æ¬»­µ½ÁËµÚ¼¸»­Ãæ
-		private int img_conut;	//¶¯×÷µÄÍ¼Æ¬×ÜÊı
-		private int count_to_draw;	//Ñ­»·¶àÉÙ´Î¾Í±ä»»Ò»´ÎÍ¼Ïñ
-		private int count_draw;	//Ñ­»·ÁË¶àÉÙ´Î
+		private int width,heigth;//æ¯ä¸€å¹…å›¾ç‰‡çš„é•¿ï¼Œå®½
+		private int draw_count;	//å½“å‰çš„åŠ¨ä½œå›¾ç‰‡ç”»åˆ°äº†ç¬¬å‡ ç”»é¢
+		private int img_conut;	//åŠ¨ä½œçš„å›¾ç‰‡æ€»æ•°
+		private int count_to_draw;	//å¾ªç¯å¤šå°‘æ¬¡å°±å˜æ¢ä¸€æ¬¡å›¾åƒ
+		private int count_draw;	//å¾ªç¯äº†å¤šå°‘æ¬¡
 		private BufferedImage bfimg;
 		public Dongzuo(String url,int img_conut){
 			this.img_conut = img_conut;
@@ -353,11 +353,11 @@ public class Jingling extends Component{
 			count_to_draw = 10;		
 			
 			Image img = Toolkit.getDefaultToolkit().createImage(url);		
-			MediaTracker tracker = new MediaTracker(this);	//µÈ´ıÍ¼Æ¬¼ÓÔØÍê³É
-			tracker.addImage(img, 0);	//ÈçºÎÍêÕû¼ÓÈëÍ¼Ïñ£¿£¿		
+			MediaTracker tracker = new MediaTracker(this);	//ç­‰å¾…å›¾ç‰‡åŠ è½½å®Œæˆ
+			tracker.addImage(img, 0);	//å¦‚ä½•å®Œæ•´åŠ å…¥å›¾åƒï¼Ÿï¼Ÿ		
 			try     
 	        {   
-				tracker.waitForAll();   //µÈ´ıÈ«²¿¼ÓÈë
+				tracker.waitForAll();   //ç­‰å¾…å…¨éƒ¨åŠ å…¥
 	        }   
 	        catch   (Exception   ex)     
 	        {   
@@ -368,7 +368,7 @@ public class Jingling extends Component{
 	        heigth	= img.getHeight(null);
 	        
 	        bfimg = new BufferedImage(img.getWidth(null),img.getHeight(null),BufferedImage.TYPE_INT_ARGB);
-			bfimg.getGraphics().drawImage(img,0,0,null);	//°ÑÍ¼Æ¬»­µ½»º³åÇøÍ¼Æ¬ÉÏ		
+			bfimg.getGraphics().drawImage(img,0,0,null);	//æŠŠå›¾ç‰‡ç”»åˆ°ç¼“å†²åŒºå›¾ç‰‡ä¸Š		
 		}
 		public void draw(Graphics2D g){
 			

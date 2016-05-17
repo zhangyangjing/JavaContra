@@ -6,7 +6,7 @@ import java.awt.Color;
 import panels.GamePanel;
 
 public class Zidanlei{
-	public static final int ZIDAN_JIAODU_0		= 1;	//×Óµ¯Éä³öµÄ°Ë¸ö·½Ïò
+	public static final int ZIDAN_JIAODU_0		= 1;	//å­å¼¹å°„å‡ºçš„å…«ä¸ªæ–¹å‘
 	public static final int ZIDAN_JIAODU_45		= 2;
 	public static final int ZIDAN_JIAODU_90		= 3;
 	public static final int ZIDAN_JIAODU_135	= 4;
@@ -18,9 +18,9 @@ public class Zidanlei{
 	
 	
 	
-	private static ArrayList list;	//µ±Ç°µÄ×Óµ¯ÁĞ±í
-	private static ArrayList list_wait;	//¿ÕÏĞµÄ×Óµ¯ÁĞ±í
-	private GamePanel gp;	//¶ÔÓÎÏ·Ãæ°åµÄÒıÓÃ£¬ÓÃÒÔµÃµ½µØÍ¼£¬¾«ÁéµÄÊı¾İ
+	private static ArrayList list;	//å½“å‰çš„å­å¼¹åˆ—è¡¨
+	private static ArrayList list_wait;	//ç©ºé—²çš„å­å¼¹åˆ—è¡¨
+	private GamePanel gp;	//å¯¹æ¸¸æˆé¢æ¿çš„å¼•ç”¨ï¼Œç”¨ä»¥å¾—åˆ°åœ°å›¾ï¼Œç²¾çµçš„æ•°æ®
 	
 	public Zidanlei(GamePanel gamepanel){
 		list = new ArrayList();
@@ -29,9 +29,9 @@ public class Zidanlei{
 	}
 	
 	public void addzidan(int x,int y,boolean ismy,int jiaodu){
-		System.out.println("Ìí¼ÓÁËÒ»¸ö×Óµ¯");
-		if(list_wait.size() != 0){	//Èç¹û¿ÕÏĞÁĞ±íÀïÓĞ¿ÕÏĞµÄ£¬ÄÇÃ´¾ÍÀûÓÃ¿ÕÏĞ×Óµ¯ÀàÉú³É
-			System.out.println("´Ó¿ÕÏĞÁĞ±íÀïÉú³ÉÒ»¸ö×Óµ¯");
+		System.out.println("æ·»åŠ äº†ä¸€ä¸ªå­å¼¹");
+		if(list_wait.size() != 0){	//å¦‚æœç©ºé—²åˆ—è¡¨é‡Œæœ‰ç©ºé—²çš„ï¼Œé‚£ä¹ˆå°±åˆ©ç”¨ç©ºé—²å­å¼¹ç±»ç”Ÿæˆ
+			System.out.println("ä»ç©ºé—²åˆ—è¡¨é‡Œç”Ÿæˆä¸€ä¸ªå­å¼¹");
 			Zidan zd = (Zidan)list_wait.get(0);
 			
 			zd.x = x;
@@ -39,25 +39,25 @@ public class Zidanlei{
 			zd.ismy = ismy;
 			zd.jiaodu = jiaodu;
 			
-			list.add(zd);	//Ìí¼Óµ½×Óµ¯ÁĞ±íÀï£¬´Ó¿ÕÏĞÁĞ±íÉ¾³ı
+			list.add(zd);	//æ·»åŠ åˆ°å­å¼¹åˆ—è¡¨é‡Œï¼Œä»ç©ºé—²åˆ—è¡¨åˆ é™¤
 			list_wait.remove(0);
 		}
 		else{
-			System.out.println("´´½¨Éú³ÉÒ»¸ö×Óµ¯");
+			System.out.println("åˆ›å»ºç”Ÿæˆä¸€ä¸ªå­å¼¹");
 			Zidan zd = new Zidan();			
 			zd.x = x;
 			zd.y = y;
 			zd.ismy = ismy;
 			zd.jiaodu = jiaodu;			
-			list.add(zd);	//Ìí¼Óµ½×Óµ¯ÁĞ±íÀï£¬´Ó¿ÕÏĞÁĞ±íÉ¾³ı
+			list.add(zd);	//æ·»åŠ åˆ°å­å¼¹åˆ—è¡¨é‡Œï¼Œä»ç©ºé—²åˆ—è¡¨åˆ é™¤
 		}
 	}		
-	public void todo(Graphics2D g){	//ÓĞÍâÃæµ÷ÓÃ
+	public void todo(Graphics2D g){	//æœ‰å¤–é¢è°ƒç”¨
 		this.move();
 		this.check();
 		this.draw(g);
 	}
-	private void move(){	//×Óµ¯µÄÒÆ¶¯
+	private void move(){	//å­å¼¹çš„ç§»åŠ¨
 		for(int i = 0;i < list.size();i++){
 			Zidan zd = (Zidan)list.get(i);
 			switch(zd.jiaodu ){
@@ -67,21 +67,21 @@ public class Zidanlei{
 				case Zidanlei.ZIDAN_JIAODU_270 :
 					zd.x -= 2;
 					break;
-				default :	//ÔİÊ±µ÷ÊÔÓÃ
+				default :	//æš‚æ—¶è°ƒè¯•ç”¨
 					zd.x++;
 					//zd.y++;
 			}
 		}
 	}
-	private void draw(Graphics2D g){	//»­ÉÏ×Óµ¯
+	private void draw(Graphics2D g){	//ç”»ä¸Šå­å¼¹
 		g.setColor(Color.RED);
-		//System.out.println("×Óµ¯Êı×é´óĞ¡£º" + list.size());
+		//System.out.println("å­å¼¹æ•°ç»„å¤§å°ï¼š" + list.size());
 		for(int i = 0;i < list.size();i++){
 			Zidan zd = (Zidan)list.get(i);			
 			g.fillRect(zd.x - gp.jingling.zongx + gp.jingling.x,zd.y,5,5);
 		}
 	}
-	private void check(){	//¼ì²â×Óµ¯
+	private void check(){	//æ£€æµ‹å­å¼¹
 		for(int i = 0;i < list.size();i++){
 			Zidan zd = (Zidan)list.get(i);
 			if(zd.x - gp.jingling.zongx > 200 || gp.jingling.zongx - zd.x > 200 || zd.y < 0 || zd.y > 300){
@@ -89,18 +89,18 @@ public class Zidanlei{
 			}
 		}
 	}
-	private void movetowait(int i){	//½«³öÁËµ±Ç°½çÃæµÄÃ»ÓÃµÄ×Óµ¯ÒÆµ½¿ÕÏĞ×Óµ¯ÁĞ±í
-		System.out.println("É¾³ıÁËÒ»¸ö×Óµ¯");
+	private void movetowait(int i){	//å°†å‡ºäº†å½“å‰ç•Œé¢çš„æ²¡ç”¨çš„å­å¼¹ç§»åˆ°ç©ºé—²å­å¼¹åˆ—è¡¨
+		System.out.println("åˆ é™¤äº†ä¸€ä¸ªå­å¼¹");
 		list_wait.add(list.get(i));
 		list.remove(i);
 	}
 	
 	
-	public class Zidan {	//×Óµ¯Àà
-		private int x;	//×Óµ¯µÄx£¬y×ø±ê£»»òĞíÓ¦¸Ã´æ´¢Ã¿´Îx£¬yÒÆ¶¯µÄ¶àÉÙ
-		private int y;	//×Óµ¯µÄx£¬y×ø±ê£»
-		private boolean ismy;	//ÊÇ»ê¶·ÂŞµÄ×Óµ¯»¹ÊÇµĞÈËµÄ×Óµ¯¡£
-		private int jiaodu;	//×Óµ¯´ò³öÊ±ºòµÄ½Ç¶È¡£
+	public class Zidan {	//å­å¼¹ç±»
+		private int x;	//å­å¼¹çš„xï¼Œyåæ ‡ï¼›æˆ–è®¸åº”è¯¥å­˜å‚¨æ¯æ¬¡xï¼Œyç§»åŠ¨çš„å¤šå°‘
+		private int y;	//å­å¼¹çš„xï¼Œyåæ ‡ï¼›
+		private boolean ismy;	//æ˜¯é­‚æ–—ç½—çš„å­å¼¹è¿˜æ˜¯æ•Œäººçš„å­å¼¹ã€‚
+		private int jiaodu;	//å­å¼¹æ‰“å‡ºæ—¶å€™çš„è§’åº¦ã€‚
 	}
 }
 

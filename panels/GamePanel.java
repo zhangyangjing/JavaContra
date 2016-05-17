@@ -22,21 +22,21 @@ import map.GameMap;
 import option.Opotion;
 
 public class GamePanel extends JPanel implements Runnable,KeyListener,FocusListener,events.Add_zidan_jiekou {	
-	public Jingling jingling;	//¾«Áé
-	public GameMap	gamemap;	//µØÍ¼µÄÊı¾İ
-	public Zidanlei zidan;		//×Óµ¯
+	public Jingling jingling;	//ç²¾çµ
+	public GameMap	gamemap;	//åœ°å›¾çš„æ•°æ®
+	public Zidanlei zidan;		//å­å¼¹
 	
-	private int jinglingx;	//¾«ÁéÒ»¿ªÊ¼·Åµ½µÄxµÄÎ»ÖÃ
+	private int jinglingx;	//ç²¾çµä¸€å¼€å§‹æ”¾åˆ°çš„xçš„ä½ç½®
 	private int lastpresskey;
-	private int x,y,heigth,weidth;	//¶¨ÒåÊı¾İ
-	private boolean gonging;	//ÊÇ·ñ¼ÌĞø
-	private Image img;	//¶ÁÈ¡Í¼ÏñÊı¾İ
-	private BufferedImage buf_image;	//»æÖÆË«»º³å
-	private Sequencer midi;	//²¥·ÅÒôÀÖµÄ±äÁ¿	
-	private Vector repository;	//¶¨ÒåÊÂ¼ş¼àÌıÆ÷¼¯
+	private int x,y,heigth,weidth;	//å®šä¹‰æ•°æ®
+	private boolean gonging;	//æ˜¯å¦ç»§ç»­
+	private Image img;	//è¯»å–å›¾åƒæ•°æ®
+	private BufferedImage buf_image;	//ç»˜åˆ¶åŒç¼“å†²
+	private Sequencer midi;	//æ’­æ”¾éŸ³ä¹çš„å˜é‡	
+	private Vector repository;	//å®šä¹‰äº‹ä»¶ç›‘å¬å™¨é›†
 	events.Panel_over_linstener_jiekou dl;
 	
-	public GamePanel(int weidth,int heigth) {	//¹¹Ôì»¯º¯Êı
+	public GamePanel(int weidth,int heigth) {	//æ„é€ åŒ–å‡½æ•°
 		x = 0;
 		y = 0;
 		gonging = true;
@@ -45,33 +45,33 @@ public class GamePanel extends JPanel implements Runnable,KeyListener,FocusListe
 		gamemap = new GameMap(Opotion.getmapfile());
 		zidan = new Zidanlei(this);
 		
-		//zidan.addzidan(0,50,true,Zidanlei.ZIDAN_JIAODU_225);	//Ìí¼ÓÒ»¸ö×Óµ¯²âÊÔÓÃ
-		//zidan.addzidan(10,100,true,Zidanlei.ZIDAN_JIAODU_225);	//Ìí¼ÓÒ»¸ö×Óµ¯²âÊÔÓÃ
+		//zidan.addzidan(0,50,true,Zidanlei.ZIDAN_JIAODU_225);	//æ·»åŠ ä¸€ä¸ªå­å¼¹æµ‹è¯•ç”¨
+		//zidan.addzidan(10,100,true,Zidanlei.ZIDAN_JIAODU_225);	//æ·»åŠ ä¸€ä¸ªå­å¼¹æµ‹è¯•ç”¨
 		
 		repository = new Vector();
 		
-		this.addKeyListener(this);	//Ìí¼Ó¼üÅÌ¼àÌıÊÂ¼ş
-		this.addFocusListener(this);	//Ìí¼Ó½¹µã¼àÌıÊÂ¼ş
+		this.addKeyListener(this);	//æ·»åŠ é”®ç›˜ç›‘å¬äº‹ä»¶
+		this.addFocusListener(this);	//æ·»åŠ ç„¦ç‚¹ç›‘å¬äº‹ä»¶
 		
 		try {
-        	//²¥·ÅmidÊµÑé´úÂë
+        	//æ’­æ”¾midå®éªŒä»£ç 
         	///*
-            Sequence seq = MidiSystem.getSequence(new File("music\\first.mid"));
+            Sequence seq = MidiSystem.getSequence(new File("music/first.mid"));
             midi = MidiSystem.getSequencer();
             midi.open();
             midi.setSequence(seq);
-            midi.setLoopCount(Sequencer.LOOP_CONTINUOUSLY);	//ÉèÖÃÑ­»·²¥·Å
+            midi.setLoopCount(Sequencer.LOOP_CONTINUOUSLY);	//è®¾ç½®å¾ªç¯æ’­æ”¾
             midi.start();
             //*/
         	} 
         catch (Exception ex) {}    
 			
-		img = this.getToolkit().createImage("image\\2004530941787.png");
-		MediaTracker tracker = new MediaTracker(this);	//µÈ´ıÍ¼Æ¬¼ÓÔØÍê³É
+		img = this.getToolkit().createImage("image/2004530941787.png");
+		MediaTracker tracker = new MediaTracker(this);	//ç­‰å¾…å›¾ç‰‡åŠ è½½å®Œæˆ
 		tracker.addImage(img, 0);
 		try     
         {   
-			tracker.waitForAll();   //µÈ´ıÈ«²¿¼ÓÈë
+			tracker.waitForAll();   //ç­‰å¾…å…¨éƒ¨åŠ å…¥
         }   
         catch   (Exception   ex)     
         {   
@@ -85,17 +85,17 @@ public class GamePanel extends JPanel implements Runnable,KeyListener,FocusListe
 		buf_grafc.drawImage(img,0,0,null);		
 		
 		jinglingx = 120;
-		jingling = new Jingling(jinglingx,110,buf_image.getWidth(),this.weidth);	//¾«Áé
-		jingling.addPanel_over_linstener(new Ren_over());	//Ìí¼ÓÈËÎïËÀµôÊ±µÄ½áÊøÊÂ¼ş
+		jingling = new Jingling(jinglingx,110,buf_image.getWidth(),this.weidth);	//ç²¾çµ
+		jingling.addPanel_over_linstener(new Ren_over());	//æ·»åŠ äººç‰©æ­»æ‰æ—¶çš„ç»“æŸäº‹ä»¶
 		jingling.addjia_zidan_listener(this);
 		//jingling.
 		
-		//buf_grafc.setColor(Color.GREEN);//ÊµÑéÓÃ´úÂë
+		//buf_grafc.setColor(Color.GREEN);//å®éªŒç”¨ä»£ç 
 		//buf_grafc.drawRect(3,3,30,30);
 		//buf_grafc.setColor(Color.RED);
 		//buf_grafc.fillRect(4,4,29,29);
 	}
-	public void startdraw() {	//¿ªÊ¼¶¯»­Ë¢ĞÂ£¬¿ªÊ¼Ïß³Ì
+	public void startdraw() {	//å¼€å§‹åŠ¨ç”»åˆ·æ–°ï¼Œå¼€å§‹çº¿ç¨‹
 		Thread thd = new Thread(this);
 		thd.setPriority(Thread.MIN_PRIORITY);
 		thd.start();
@@ -103,30 +103,30 @@ public class GamePanel extends JPanel implements Runnable,KeyListener,FocusListe
 	}
 	public void stop(){
 		gonging = false;
-		jingling.setdongzuo(Jingling.DZ_TING);	//ÈÃ¾«ÁéÔİÍ££¬·ñÔòµÃµ½½¹µãºó¼´Ê¹²»°´×ß¼ü£¬Ò²»á¼ÌĞø×ß
+		jingling.setdongzuo(Jingling.DZ_TING);	//è®©ç²¾çµæš‚åœï¼Œå¦åˆ™å¾—åˆ°ç„¦ç‚¹åå³ä½¿ä¸æŒ‰èµ°é”®ï¼Œä¹Ÿä¼šç»§ç»­èµ°
 	}
 	public void goon(){
 		gonging = true;
 	}
 	
-	public void run() {		//Ïß³Ì¿ªÊ¼
-		long time = System.currentTimeMillis(); 	//¼ÆËãÖ¡ÂÊÓÃ
+	public void run() {		//çº¿ç¨‹å¼€å§‹
+		long time = System.currentTimeMillis(); 	//è®¡ç®—å¸§ç‡ç”¨
 		int i = 0;
 		
-		long times = System.currentTimeMillis();	//¿ØÖÆÖ¡ÂÊ
+		long times = System.currentTimeMillis();	//æ§åˆ¶å¸§ç‡
 		
 		while(true) {
 			
-			i++;	//´Ë¶ÎÅĞ¶ÏÖ¡ÂÊ
+			i++;	//æ­¤æ®µåˆ¤æ–­å¸§ç‡
 			if(System.currentTimeMillis() - time > 1000){
 				time = System.currentTimeMillis();
-				System.out.println("µ±Ç°Ö¡ÂÊ£º" + i);
+				System.out.println("å½“å‰å¸§ç‡ï¼š" + i);
 				i = 0;
 			}			
 			
-			while(gonging == false){	//ÊÇ·ñ¼ÌĞø£¿
+			while(gonging == false){	//æ˜¯å¦ç»§ç»­ï¼Ÿ
 				try{
-					Thread.sleep(10);	//ĞİÃß
+					Thread.sleep(10);	//ä¼‘çœ 
 				}
 				catch(InterruptedException e)
 				{	}
@@ -137,8 +137,8 @@ public class GamePanel extends JPanel implements Runnable,KeyListener,FocusListe
 			
 			
 			try{	
-					if(times - System.currentTimeMillis() < 9){	//¿ØÖÆÖ¡ÂÊ
-						Thread.sleep(9 - (times - System.currentTimeMillis()));	//ĞİÃß
+					if(times - System.currentTimeMillis() < 9){	//æ§åˆ¶å¸§ç‡
+						Thread.sleep(9 - (times - System.currentTimeMillis()));	//ä¼‘çœ 
 						times = System.currentTimeMillis();
 					}									
 				}			
@@ -147,56 +147,56 @@ public class GamePanel extends JPanel implements Runnable,KeyListener,FocusListe
 			
 		}
 	}
-	public void paint(Graphics g){ 	//ÖØĞ´ÁË»æÖÆº¯Êı		±³¾°ÊµÏÖÁËË«»º³å£¬µ«ÊÇÕâÀïÃ»ÓĞÊ¹ÓÃË«»º³å£¡£¡
+	public void paint(Graphics g){ 	//é‡å†™äº†ç»˜åˆ¶å‡½æ•°		èƒŒæ™¯å®ç°äº†åŒç¼“å†²ï¼Œä½†æ˜¯è¿™é‡Œæ²¡æœ‰ä½¿ç”¨åŒç¼“å†²ï¼ï¼
 		
 		Graphics2D gphc2d = (Graphics2D)g;
 		//System.out.println("Painting !");
 		//gphc2d.drawImage(img,10,5,null);
-		//gphc2d.drawImage((Image)buf_image,0,0,null);	//ÓÃÕâ¾ä»°»­³öÀ´µÄÊÇÒ»¸öºÚ¿ò£¡£¡ÓÃÉÏÃæÒ»¾äÈ´¿ÉÒÔ//ÒÑ¾­¸ã¶¨£¬ÊÇÔØÈëÍ¼ÏñÃ»ÓĞµÈµ½È«ÔØÈë¾Í¿ªÊ¼»­µÄÎÊÌâ
+		//gphc2d.drawImage((Image)buf_image,0,0,null);	//ç”¨è¿™å¥è¯ç”»å‡ºæ¥çš„æ˜¯ä¸€ä¸ªé»‘æ¡†ï¼ï¼ç”¨ä¸Šé¢ä¸€å¥å´å¯ä»¥//å·²ç»æå®šï¼Œæ˜¯è½½å…¥å›¾åƒæ²¡æœ‰ç­‰åˆ°å…¨è½½å…¥å°±å¼€å§‹ç”»çš„é—®é¢˜
 		x = jingling.zongx - jinglingx + 1;
 		//System.out.print(jingling.zongx);
-		gphc2d.drawImage(buf_image.getSubimage(x,y,weidth,buf_image.getHeight()),0,0,null);	//¸ßÊÇÍ¼Æ¬µÄ¸ß¿íÊÇpanelµÄ¿í
+		gphc2d.drawImage(buf_image.getSubimage(x,y,weidth,buf_image.getHeight()),0,0,null);	//é«˜æ˜¯å›¾ç‰‡çš„é«˜å®½æ˜¯panelçš„å®½
 		jingling.todo(gphc2d);
 		zidan.todo(gphc2d);
 		
 		//g.drawImage(bfimg,0,0,null);
 	}
-	public void addPanel_over_linstener(events.Panel_over_linstener_jiekou hdl) {	//×Ô¶¨ÒåÊÂ¼şµÄÊÂ¼şÔ´·½´¦Àí	
-		repository.addElement(hdl);//Õâ²½Òª×¢ÒâÍ¬²½ÎÊÌâ
+	public void addPanel_over_linstener(events.Panel_over_linstener_jiekou hdl) {	//è‡ªå®šä¹‰äº‹ä»¶çš„äº‹ä»¶æºæ–¹å¤„ç†	
+		repository.addElement(hdl);//è¿™æ­¥è¦æ³¨æ„åŒæ­¥é—®é¢˜
 	}
-	public void shijian(events.Panel_over_event event) {	//´¥·¢Ö´ĞĞÊÂ¼ş
-	    Enumeration enum = repository.elements();//Õâ²½Òª×¢ÒâÍ¬²½ÎÊÌâ
+	public void shijian(events.Panel_over_event event) {	//è§¦å‘æ‰§è¡Œäº‹ä»¶
+	    Enumeration enum = repository.elements();//è¿™æ­¥è¦æ³¨æ„åŒæ­¥é—®é¢˜
 	    while(enum.hasMoreElements())
 	    {
 	    	dl = (events.Panel_over_linstener_jiekou)enum.nextElement();
 	    	dl.EventActivated(event);
 	    }
 	  }
-	public void keyPressed(KeyEvent e) {	//¼üÅÌ¼àÌı½Ó¿ÚµÄÊµÏÖ
-		if(e.getKeyCode()== KeyEvent.VK_RIGHT || e.getKeyCode() == KeyEvent.VK_KP_RIGHT){	//°´ÏÂÏòÓÒ¼ü
+	public void keyPressed(KeyEvent e) {	//é”®ç›˜ç›‘å¬æ¥å£çš„å®ç°
+		if(e.getKeyCode()== KeyEvent.VK_RIGHT || e.getKeyCode() == KeyEvent.VK_KP_RIGHT){	//æŒ‰ä¸‹å‘å³é”®
 			lastpresskey = KeyEvent.VK_RIGHT;
 			jingling.setfangxiang(Jingling.DZ_FX_QIAN);
 			jingling.setdongzuo(Jingling.DZ_ZOU);
-			//System.out.println("ÏòÇ°×ß");
+			//System.out.println("å‘å‰èµ°");
 		}
-		if(e.getKeyCode()== KeyEvent.VK_LEFT || e.getKeyCode() == KeyEvent.VK_KP_LEFT ){	//°´ÏÂÏò×ó¼ü
+		if(e.getKeyCode()== KeyEvent.VK_LEFT || e.getKeyCode() == KeyEvent.VK_KP_LEFT ){	//æŒ‰ä¸‹å‘å·¦é”®
 			lastpresskey = KeyEvent.VK_LEFT;
 			jingling.setfangxiang(Jingling.DZ_FX_HOU);
 			jingling.setdongzuo(Jingling.DZ_ZOU);		
-			//System.out.println("Ïòºó×ß");
+			//System.out.println("å‘åèµ°");
 		}
-		if(e.getKeyCode()== KeyEvent.VK_UP || e.getKeyCode() == KeyEvent.VK_KP_UP ){	//°´ÏÂÏòÉÏ¼ü
+		if(e.getKeyCode()== KeyEvent.VK_UP || e.getKeyCode() == KeyEvent.VK_KP_UP ){	//æŒ‰ä¸‹å‘ä¸Šé”®
 			jingling.tiao();					
-			//System.out.println("ÌøÆğ£¡");
+			//System.out.println("è·³èµ·ï¼");
 		}
-		if(e.getKeyCode()== KeyEvent.VK_DOWN || e.getKeyCode() == KeyEvent.VK_KP_DOWN ){	//°´ÏÂÏòÏÂ¼ü
+		if(e.getKeyCode()== KeyEvent.VK_DOWN || e.getKeyCode() == KeyEvent.VK_KP_DOWN ){	//æŒ‰ä¸‹å‘ä¸‹é”®
 			lastpresskey = KeyEvent.VK_DOWN;
 			jingling.setdongzuo(Jingling.DZ_PA);
-			//System.out.println("Å¿ÏÂ");
+			//System.out.println("è¶´ä¸‹");
 		}
-		if(e.getKeyCode()== KeyEvent.VK_BACK_SPACE || e.getKeyCode() == KeyEvent.VK_SPACE){	//°´ÏÂ¿Õ¸ñ¼ü
+		if(e.getKeyCode()== KeyEvent.VK_BACK_SPACE || e.getKeyCode() == KeyEvent.VK_SPACE){	//æŒ‰ä¸‹ç©ºæ ¼é”®
 			jingling.add_zidan();
-			System.out.println("°´ÏÂ¿Õ¸ñ¼ü");			
+			System.out.println("æŒ‰ä¸‹ç©ºæ ¼é”®");			
 		}
 	}
 	public void keyTyped(KeyEvent e) { }
@@ -204,25 +204,25 @@ public class GamePanel extends JPanel implements Runnable,KeyListener,FocusListe
 		if(e.getKeyCode()== KeyEvent.VK_DOWN || e.getKeyCode() == KeyEvent.VK_KP_DOWN || e.getKeyCode() == KeyEvent.VK_KP_UP || e.getKeyCode()== KeyEvent.VK_UP || e.getKeyCode()== KeyEvent.VK_LEFT || e.getKeyCode() == KeyEvent.VK_KP_LEFT || e.getKeyCode()== KeyEvent.VK_RIGHT || e.getKeyCode() == KeyEvent.VK_KP_RIGHT)
 			if(e.getKeyCode() == lastpresskey)
 				jingling.setdongzuo(Jingling.DZ_TING);
-		//System.out.println("Í£×¡");
+		//System.out.println("åœä½");
 	}
 	public void focusLost(FocusEvent e){
 		midi.stop();
 		gonging = false;
-		jingling.setdongzuo(Jingling.DZ_TING);	//ÈÃ¾«ÁéÔİÍ££¬·ñÔòµÃµ½½¹µãºó¼´Ê¹²»°´×ß¼ü£¬Ò²»á¼ÌĞø×ß
+		jingling.setdongzuo(Jingling.DZ_TING);	//è®©ç²¾çµæš‚åœï¼Œå¦åˆ™å¾—åˆ°ç„¦ç‚¹åå³ä½¿ä¸æŒ‰èµ°é”®ï¼Œä¹Ÿä¼šç»§ç»­èµ°
 	}
 	public void focusGained(FocusEvent e){
 		midi.start();
 		gonging = true;		
 	}
-	public class Ren_over implements events.Panel_over_linstener_jiekou{	//MenuPanel½áÊøÊÂ¼şµÄ´¦Àíº¯Êı
+	public class Ren_over implements events.Panel_over_linstener_jiekou{	//MenuPanelç»“æŸäº‹ä»¶çš„å¤„ç†å‡½æ•°
 		public void EventActivated(events.Panel_over_event me) 
 		{		
-			System.out.println("ÈËËÀÁË£¬ÓÎÏ·½áÊø£¡£¡£¡£¡£¡£¡£¡£¡£¡");
+			System.out.println("äººæ­»äº†ï¼Œæ¸¸æˆç»“æŸï¼ï¼ï¼ï¼ï¼ï¼ï¼ï¼ï¼");
 			shijian(new events.Panel_over_event(this));
 		} 
 	}
-	public void add_zidan(events.Add_zidan_event event){	//ÏìÓ¦×Óµ¯µÄÊÂ¼ş£¬Ìí¼Ó×Óµ¯
+	public void add_zidan(events.Add_zidan_event event){	//å“åº”å­å¼¹çš„äº‹ä»¶ï¼Œæ·»åŠ å­å¼¹
 		zidan.addzidan(event.x,event.y,event.ismy,event.jiaodu);
 	}
 }

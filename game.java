@@ -33,13 +33,13 @@ class game extends JFrame implements WindowListener,WindowFocusListener{
 	}
 	
 	public game() {
-		opts = new Opotion();	//È«¾ÖµÄÊı¾İ
+		opts = new Opotion();	//å…¨å±€çš„æ•°æ®
 		
-		this.setLayout(null);	//ÊÖ¹¤ÅÅ°æ
-		this.setTitle("Ğ¡ÓÎÏ·");
+		this.setLayout(null);	//æ‰‹å·¥æ’ç‰ˆ
+		this.setTitle("å°æ¸¸æˆ");
 		this.setIconImage(this.getToolkit().createImage("image\\icon.png"));
-		//this.setResizable(false);	//½ûÖ¹µ÷Õû´óĞ¡
-		//this.setUndecorated(true);	//ÉèÖÃÎŞ±êÌâÀ¸
+		//this.setResizable(false);	//ç¦æ­¢è°ƒæ•´å¤§å°
+		//this.setUndecorated(true);	//è®¾ç½®æ— æ ‡é¢˜æ 
 		this.setBounds(opts.x,opts.y,264,255);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.addWindowListener(this);
@@ -47,20 +47,20 @@ class game extends JFrame implements WindowListener,WindowFocusListener{
 		
 					
 		/**
-		button1 = new JButton("¿ªÊ¼¶¯»­");	//Ìí¼ÓÒ»¸ö°´Å¥
+		button1 = new JButton("å¼€å§‹åŠ¨ç”»");	//æ·»åŠ ä¸€ä¸ªæŒ‰é’®
 		button1.setBounds(2,3,80,40);
 		button1.addMouseListener(new button1_click());
 		this.add(button1);
 		*/
 		///**
-		menupanl = new MenuPanel();	//Ìí¼Ó²Ëµ¥Ãæ°åMenuPanel
+		menupanl = new MenuPanel();	//æ·»åŠ èœå•é¢æ¿MenuPanel
 		menupanl.setBounds(0,0,opts.kuan,opts.gao);
 		menupanl.addPanel_over_linstener(new MenuPanel_over_linsteners());
 		this.add(menupanl);
 		PanelType = game.PANEL_TYPE_MENUPANEL;
 		//*/
 		/**
-		gamepanl = new GamePanel(opts.kuan,opts.gao);	//Ìí¼ÓÓÎÏ·Ãæ°åGamePanel		
+		gamepanl = new GamePanel(opts.kuan,opts.gao);	//æ·»åŠ æ¸¸æˆé¢æ¿GamePanel		
 		gamepanl.setBounds(0,45,opts.kuan,opts.gao);
 		this.add(gamepanl);
 		*/
@@ -70,12 +70,12 @@ class game extends JFrame implements WindowListener,WindowFocusListener{
 	}
 	/*
 	public void paint(Graphics g){
-		BufferedImage bfimg = new BufferedImage(g.getClipBounds().width,g.getClipBounds().height,BufferedImage.TYPE_INT_ARGB);	//½¨Á¢ÁíÒ»¸ö»º³åÍ¼Æ¬
+		BufferedImage bfimg = new BufferedImage(g.getClipBounds().width,g.getClipBounds().height,BufferedImage.TYPE_INT_ARGB);	//å»ºç«‹å¦ä¸€ä¸ªç¼“å†²å›¾ç‰‡
 		Graphics2D newg = (Graphics2D)bfimg.getGraphics();
 		//Graphics2D gphc2d = (Graphics2D)g;
 		//System.out.println("Painting !");
 		//gphc2d.drawImage(img,10,5,null);
-		//gphc2d.drawImage((Image)buf_image,0,0,null);	//ÓÃÕâ¾ä»°»­³öÀ´µÄÊÇÒ»¸öºÚ¿ò£¡£¡ÓÃÉÏÃæÒ»¾äÈ´¿ÉÒÔ//ÒÑ¾­¸ã¶¨£¬ÊÇÔØÈëÍ¼ÏñÃ»ÓĞµÈµ½È«ÔØÈë¾Í¿ªÊ¼»­µÄÎÊÌâ
+		//gphc2d.drawImage((Image)buf_image,0,0,null);	//ç”¨è¿™å¥è¯ç”»å‡ºæ¥çš„æ˜¯ä¸€ä¸ªé»‘æ¡†ï¼ï¼ç”¨ä¸Šé¢ä¸€å¥å´å¯ä»¥//å·²ç»æå®šï¼Œæ˜¯è½½å…¥å›¾åƒæ²¡æœ‰ç­‰åˆ°å…¨è½½å…¥å°±å¼€å§‹ç”»çš„é—®é¢˜
 		super.paint(newg);		
 		
 		g.drawImage(bfimg.getScaledInstance(this.getWidth(),this.getHeight(),Image.SCALE_FAST),0,0,null);
@@ -83,29 +83,29 @@ class game extends JFrame implements WindowListener,WindowFocusListener{
 	}
 	*/
 	public void windowLostFocus(WindowEvent e){
-		setTitle("Ğ¡ÓÎÏ·ÓÎÏ·-ÔİÍ£");	
+		setTitle("å°æ¸¸æˆæ¸¸æˆ-æš‚åœ");	
 	}
 	public void windowGainedFocus(WindowEvent e){
-		setTitle("Ğ¡ÓÎÏ·");				
+		setTitle("å°æ¸¸æˆ");				
 		if(menupanl != null)
 		{
 			menupanl.gonging = true;
-			//menupanl.requestFocus();	//ÈÃmenupanlµÃµ½½¹µã£¬¿ÉÊÇµ±menupanlÒÑ¾­Ğ¶ÏÂÁË£¬±ğµÄpanlÔÚÔËĞĞÔõÃ´°ì£¿
+			//menupanl.requestFocus();	//è®©menupanlå¾—åˆ°ç„¦ç‚¹ï¼Œå¯æ˜¯å½“menupanlå·²ç»å¸ä¸‹äº†ï¼Œåˆ«çš„panlåœ¨è¿è¡Œæ€ä¹ˆåŠï¼Ÿ
 			//System.out.println("dddd");
 			switch(PanelType)
 			{
 				case game.PANEL_TYPE_GMAEPANEL:
 					gamepanl.requestFocus();
-					System.out.println("GMAEPANELµÃµ½ÁË½¹µã");
+					System.out.println("GMAEPANELå¾—åˆ°äº†ç„¦ç‚¹");
 					break;
 				case game.PANEL_TYPE_MENUPANEL:
 					menupanl.requestFocus();
-					System.out.println("MENUPANELµÃµ½ÁË½¹µã");
+					System.out.println("MENUPANELå¾—åˆ°äº†ç„¦ç‚¹");
 					break;
 			}
 		}
 	}
-	public void windowClosing(WindowEvent e) {	//¹Ø±Õ³ÌĞòÍË³öÊ±±£´æÅäÖÃ
+	public void windowClosing(WindowEvent e) {	//å…³é—­ç¨‹åºé€€å‡ºæ—¶ä¿å­˜é…ç½®
 		opts.x = this.getX();		
 		opts.y = this.getY();
 		opts.saveopotion();
@@ -117,26 +117,26 @@ class game extends JFrame implements WindowListener,WindowFocusListener{
 	public void windowDeactivated(WindowEvent e) {}	
 	public void windowActivated(WindowEvent e) {}
 	
-	public class MenuPanel_over_linsteners implements events.Panel_over_linstener_jiekou{	//MenuPanel½áÊøÊÂ¼şµÄ´¦Àíº¯Êı
+	public class MenuPanel_over_linsteners implements events.Panel_over_linstener_jiekou{	//MenuPanelç»“æŸäº‹ä»¶çš„å¤„ç†å‡½æ•°
 		public void EventActivated(events.Panel_over_event me) 
 		{		
-		System.out.println("Ö´ĞĞmenuÃæ°åµÄoverÊ±¼äº¯Êı¡£");
-		remove(menupanl);	//ÏÔÊ¾µÄµ÷ÓÃremoveº¯Êı£¿£¿
+		System.out.println("æ‰§è¡Œmenué¢æ¿çš„overæ—¶é—´å‡½æ•°ã€‚");
+		remove(menupanl);	//æ˜¾ç¤ºçš„è°ƒç”¨removeå‡½æ•°ï¼Ÿï¼Ÿ
 		//repaint();
-		//menupanl.	//ÕâÀïÈçºÎÉ¾³ıÕâ¸öjpanel¿Ø¼ş£¿£¿
+		//menupanl.	//è¿™é‡Œå¦‚ä½•åˆ é™¤è¿™ä¸ªjpanelæ§ä»¶ï¼Ÿï¼Ÿ
 		gamepanl = null;
-		gamepanl = new GamePanel(opts.kuan,opts.gao);	//Ìí¼ÓÓÎÏ·Ãæ°åGamePanel		
+		gamepanl = new GamePanel(opts.kuan,opts.gao);	//æ·»åŠ æ¸¸æˆé¢æ¿GamePanel		
 		gamepanl.setBounds(0,0,opts.kuan,opts.gao);
 		add(gamepanl);
 		gamepanl.requestFocus();
 		PanelType = game.PANEL_TYPE_GMAEPANEL;
-		System.out.println("¿ªÊ¼¶¯»­");
+		System.out.println("å¼€å§‹åŠ¨ç”»");
 		gamepanl.addPanel_over_linstener(new GamePanel_over_linsteners());
 		gamepanl.startdraw();			
 		} 
 	}
 	
-	public class GamePanel_over_linsteners implements events.Panel_over_linstener_jiekou{	//MenuPanel½áÊøÊÂ¼şµÄ´¦Àíº¯Êı
+	public class GamePanel_over_linsteners implements events.Panel_over_linstener_jiekou{	//MenuPanelç»“æŸäº‹ä»¶çš„å¤„ç†å‡½æ•°
 		public void EventActivated(events.Panel_over_event me) 
 		{		
 			remove(gamepanl);
@@ -145,7 +145,7 @@ class game extends JFrame implements WindowListener,WindowFocusListener{
 		} 
 	}
 	
-	private class button1_click extends MouseAdapter	//Ò»¿ªÊ¼µ÷ÊÔÓÃ£¬ÏÖÔÚÒÑ¾­ÎŞÓÃ
+	private class button1_click extends MouseAdapter	//ä¸€å¼€å§‹è°ƒè¯•ç”¨ï¼Œç°åœ¨å·²ç»æ— ç”¨
 	{
 		public void mouseClicked(MouseEvent e)
 		{

@@ -2,16 +2,16 @@ package events;
 import  java.util.EventObject;
 import  java.util.EventListener;
 public class events {
-	static public class Panel_over_event extends EventObject{	//Ò»¸öÃæ°å½áÊøµÄÊÂ¼ş¶ÔÏó
+	static public class Panel_over_event extends EventObject{	//ä¸€ä¸ªé¢æ¿ç»“æŸçš„äº‹ä»¶å¯¹è±¡
 		public Panel_over_event(Object source){
 			super(source);
 		}
 	}
-	static public class Add_zidan_event extends EventObject{	//·¢³öÒ»¸ö×Óµ¯µÄÊÂ¼ş¶ÔÏó
-		public int x;	//×Óµ¯µÄx£¬y×ø±ê£»»òĞíÓ¦¸Ã´æ´¢Ã¿´Îx£¬yÒÆ¶¯µÄ¶àÉÙ
-		public int y;	//×Óµ¯µÄx£¬y×ø±ê£»
-		public boolean ismy;	//ÊÇ»ê¶·ÂŞµÄ×Óµ¯»¹ÊÇµĞÈËµÄ×Óµ¯¡£
-		public int jiaodu;	//×Óµ¯´ò³öÊ±ºòµÄ½Ç¶È¡£
+	static public class Add_zidan_event extends EventObject{	//å‘å‡ºä¸€ä¸ªå­å¼¹çš„äº‹ä»¶å¯¹è±¡
+		public int x;	//å­å¼¹çš„xï¼Œyåæ ‡ï¼›æˆ–è®¸åº”è¯¥å­˜å‚¨æ¯æ¬¡xï¼Œyç§»åŠ¨çš„å¤šå°‘
+		public int y;	//å­å¼¹çš„xï¼Œyåæ ‡ï¼›
+		public boolean ismy;	//æ˜¯é­‚æ–—ç½—çš„å­å¼¹è¿˜æ˜¯æ•Œäººçš„å­å¼¹ã€‚
+		public int jiaodu;	//å­å¼¹æ‰“å‡ºæ—¶å€™çš„è§’åº¦ã€‚
 		
 		public Add_zidan_event(int x,int y,boolean ismy,int jiaodu,Object source){
 			super(source);
@@ -25,25 +25,25 @@ public class events {
 	static public class MenuPanel_over_linstener implements MenuPanel_over_linstener_jiekou{
 		public void EventActivated(events.MenuPanel_over_event me) 
 		{ 
-		System.out.println("ÊÂ¼şÒÑ¾­±»´¥·¢"); 
+		System.out.println("äº‹ä»¶å·²ç»è¢«è§¦å‘"); 
 		} 
 	}
 	*/
-	public interface Panel_over_linstener_jiekou extends EventListener{	//EventListenerÊÇÒ»¸ö½Ó¿Ú£¬¿ÉÊÇÎªÊ²Ã´ÒªÓÃextends¼Ì³Ğ¶ø²»ÊÇÓÃimplementsÊµÏÖ½Ó¿Ú£¿
+	public interface Panel_over_linstener_jiekou extends EventListener{	//EventListeneræ˜¯ä¸€ä¸ªæ¥å£ï¼Œå¯æ˜¯ä¸ºä»€ä¹ˆè¦ç”¨extendsç»§æ‰¿è€Œä¸æ˜¯ç”¨implementså®ç°æ¥å£ï¼Ÿ
 		public void EventActivated(events.Panel_over_event me);
 	}
-	public interface Add_zidan_jiekou extends EventListener{	//EventListenerÊÇÒ»¸ö½Ó¿Ú£¬¿ÉÊÇÎªÊ²Ã´ÒªÓÃextends¼Ì³Ğ¶ø²»ÊÇÓÃimplementsÊµÏÖ½Ó¿Ú£¿
+	public interface Add_zidan_jiekou extends EventListener{	//EventListeneræ˜¯ä¸€ä¸ªæ¥å£ï¼Œå¯æ˜¯ä¸ºä»€ä¹ˆè¦ç”¨extendsç»§æ‰¿è€Œä¸æ˜¯ç”¨implementså®ç°æ¥å£ï¼Ÿ
 		public void add_zidan(events.Add_zidan_event event);
 	}
 }
 /*
- * 		ÊÂ¼ş£¬¼àÌıÆ÷
- * ÊÂ¼şÀà°üº¬ÁËÒª´«µİÁËÒ»Ğ©ÏûÏ¢
- * ¼àÌıÆ÷ÀàÊÇÒ»¸öº¬ÓĞ´¦ÀíÊÂ¼şº¯ÊıµÄÀà
+ * 		äº‹ä»¶ï¼Œç›‘å¬å™¨
+ * äº‹ä»¶ç±»åŒ…å«äº†è¦ä¼ é€’äº†ä¸€äº›æ¶ˆæ¯
+ * ç›‘å¬å™¨ç±»æ˜¯ä¸€ä¸ªå«æœ‰å¤„ç†äº‹ä»¶å‡½æ•°çš„ç±»
  * 
- * ×¢²á¼àÌıÆ÷¾ÍÊÇ°ÑÒ»¸ö¼àÌıÆ÷µÄÒıÓÃ£¨Ö¸Õë£©´«µİ¸øÒª×¢²áµÄÊÂ¼şÔ´Àà¡£µ±ÊÂ¼ş·¢ÉúÊ±£¬ÊÂ¼şÔ´Àà¸ù
- * ¾İÕâ¸öÖ¸Õëµ÷ÓÃ¼àÌıÆ÷ÀàµÄ * ´¦Àí·½·¨º¯Êı
+ * æ³¨å†Œç›‘å¬å™¨å°±æ˜¯æŠŠä¸€ä¸ªç›‘å¬å™¨çš„å¼•ç”¨ï¼ˆæŒ‡é’ˆï¼‰ä¼ é€’ç»™è¦æ³¨å†Œçš„äº‹ä»¶æºç±»ã€‚å½“äº‹ä»¶å‘ç”Ÿæ—¶ï¼Œäº‹ä»¶æºç±»æ ¹
+ * æ®è¿™ä¸ªæŒ‡é’ˆè°ƒç”¨ç›‘å¬å™¨ç±»çš„ * å¤„ç†æ–¹æ³•å‡½æ•°
  * 
- * ÒªÏëÊµÏÖ×Ô¶¨ÒåÊÂ¼ş£¬ÒªÔÚÊÂ¼şÔ´ÀàÖĞÌí¼ÓÊµÏÖ£¨ÈçaddDemoListener£©À´°ÑÕâ¸ö´¦ÀíÀàµÄÖ¸ÕëÌí
- * ¼Óµ½×Ô¼ºµÄ¼àÌıÆ÷Êı×é¼¯ÖĞ£¨ÕâÀïÒª×¢ÒâÍ¬²½ÎÊÌâ£©
+ * è¦æƒ³å®ç°è‡ªå®šä¹‰äº‹ä»¶ï¼Œè¦åœ¨äº‹ä»¶æºç±»ä¸­æ·»åŠ å®ç°ï¼ˆå¦‚addDemoListenerï¼‰æ¥æŠŠè¿™ä¸ªå¤„ç†ç±»çš„æŒ‡é’ˆæ·»
+ * åŠ åˆ°è‡ªå·±çš„ç›‘å¬å™¨æ•°ç»„é›†ä¸­ï¼ˆè¿™é‡Œè¦æ³¨æ„åŒæ­¥é—®é¢˜ï¼‰
  */
